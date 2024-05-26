@@ -4,5 +4,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss'
   ],
+  tailwindcss: {
+    configPath: 'tailwind.config.js',
+  },
+  plugins: [
+    '~/plugins/darkMode.js'
+  ],
 })
 

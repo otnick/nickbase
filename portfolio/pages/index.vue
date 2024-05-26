@@ -8,6 +8,7 @@ const handleScroll = () => {
     console.log(scrolling.value);
     const maxScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
     const welcomeList = document.querySelector('.welcome-list');
+    
     if (welcomeList) {
         const opacity = 1 - window.scrollY / maxScrollHeight;
         (welcomeList as HTMLDivElement).style.opacity = opacity.toString();
@@ -51,7 +52,6 @@ onUnmounted(() => {
                     <div class="hover-text">to nicks</div>
                     <div class="hover-text">portfolio</div>
                     <div class="typing-line">|</div>
-                    <img src="/portfolio/public/rr.jpg" alt="nick" class="w-40 h-40 rounded-full mt-10" />
                 </div>
                 <div class="scroll-container">
                     <div class=" mt-52 ">scroll down</div>
@@ -61,9 +61,11 @@ onUnmounted(() => {
             <div class="grid grid-cols-2">
                 <div class="row-span-4">
                     <div class="ms-5 person-content">
-                        <div>nick schumacher</div>
-                        <div>abitur 2019 - brake</div>
-                        <div>medieninformatik bachelor 2021 - * - lübeck</div>
+                        <div class="person-text">
+                            <div>nick schumacher</div>
+                            <div>abitur 2019 - brake</div>
+                            <div>medieninformatik bachelor 2021 - * - lübeck</div>
+                        </div>
                     </div>
                 </div>
                 <div class="row-span-4">
@@ -89,7 +91,7 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: calc(100vh - 36px);
     border-radius: 8px;
     border: 2px solid #ffffff;
     background-color: rgb(22, 22, 22);
@@ -106,7 +108,7 @@ onUnmounted(() => {
     background-color: rgb(22, 22, 22);
     border-radius: 8px;
     border: 2px solid #ffffff;
-    height: 400px;
+    height: calc(100vh - 36px);
 }
 
 .projekt-content {
@@ -120,7 +122,7 @@ onUnmounted(() => {
     background-color: rgb(22, 22, 22);
     border-radius: 8px;
     border: 2px solid #ffffff;
-    height: 400px;
+    height: calc(100vh - 36px);
 }
 
 

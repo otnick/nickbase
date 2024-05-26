@@ -10,6 +10,9 @@
             <div class="nav__link-row">
                 <NuxtLink to="https://github.com/otnick" class="nav__link" target="_blank">GitHub</NuxtLink>
             </div>
+            <div>
+                <button @click="$darkMode.toggle">Toggle Dark Mode</button>
+            </div>
         </div>
     </div>
 </template>
@@ -18,9 +21,10 @@
 .nav {
     display: flex;
     justify-content: flex-end; /* Align links to the right */
-    background-color: rgb(22, 22, 22);
     color: white;
     padding: 10px;
+    z-index: 1000;
+    background-color: rgba(22, 22, 22, 0.041);
 }
 
 .nav__link-row {
