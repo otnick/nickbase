@@ -1,17 +1,25 @@
+<script setup lang="ts">
+
+const colorMode = useColorMode();
+
+</script>
+
 <template>
-    <div class="nav">
-        <div class="nav__content">
-            <div class="nav__link-row">
-                <NuxtLink to="/" class="nav__link">Home</NuxtLink>
-            </div>
-            <div class="nav__link-row">
-                <NuxtLink to="/projekte" class="nav__link">Projekte</NuxtLink>
-            </div>
-            <div class="nav__link-row">
-                <NuxtLink to="https://github.com/otnick" class="nav__link" target="_blank">GitHub</NuxtLink>
-            </div>
-            <div>
-                <button @click="$darkMode.toggle">Toggle Dark Mode</button>
+    <div :class="colorMode.preference">
+        <div class="nav bg-background">
+            <div class="nav__content">
+                <div class="nav__link-row">
+                    <NuxtLink to="/" class="nav__link">Home</NuxtLink>
+                </div>
+                <div class="nav__link-row">
+                    <NuxtLink to="/projekte" class="nav__link">Projekte</NuxtLink>
+                </div>
+                <div class="nav__link-row">
+                    <NuxtLink to="https://github.com/otnick" class="nav__link" target="_blank">GitHub</NuxtLink>
+                </div>
+                <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="nav__link-row">
+                    Toggle Mode
+                </button>
             </div>
         </div>
     </div>
@@ -21,10 +29,9 @@
 .nav {
     display: flex;
     justify-content: flex-end; /* Align links to the right */
-    color: white;
     padding: 10px;
     z-index: 1000;
-    background-color: rgba(22, 22, 22, 0.041);
+    color: var(rgb(--text-color));
 }
 
 .nav__link-row {

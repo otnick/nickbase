@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+const colorMode = useColorMode();
+
 const scrolling = ref(false);
 
 const handleScroll = () => {
@@ -43,7 +45,7 @@ onUnmounted(() => {
 
 <template>
     <Topbar />
-    <div class="w-full h-full background">
+    <div class="w-full h-full background bg-background">
         <div class="bg-white">
             <div class="mx-5 page-content custom-height">
                 <Navlist class="top-10 right-10 fixed" />
@@ -56,6 +58,7 @@ onUnmounted(() => {
                 <div class="scroll-container">
                     <div class=" mt-52 ">scroll down</div>
                     <div class="">\/</div>
+                    <p>Current mode: {{$colorMode.preference}}</p>
                 </div>
             </div>
             <div class="grid grid-cols-2">
@@ -82,8 +85,7 @@ onUnmounted(() => {
 
 <style scoped>
 .background {
-    background-color: rgb(22, 22, 22);
-    color: white;
+    
 }
 .page-content {
     margin-top: 36px;

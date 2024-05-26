@@ -1,21 +1,22 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: 'class', // oder 'media'
+    darkMode: 'class',
     theme: {
       extend: {
         colors: {
-          light: {
-            background: '#161616',
-            surface: '#ffffff',
-            text: '#161616',
-            primary: '#68e700',
+          background: {
+            light: '#161616',
+            dark: '#ffffff',
           },
-          dark: {
-            background: '#ffffff',
-            surface: '#161616',
-            text: '#ffffff',
-            primary: '#68e700',
+          surface: {
+            light: '#ffffff',
+            dark: '#161616',
           },
-          // Weitere Themes hier definieren
+          text: {
+            light: '#161616',
+            dark: '#ffffff',
+          },
+          primary: '#68e700',
         },
       },
     },
