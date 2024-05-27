@@ -3,12 +3,19 @@ export default defineAppConfig({
     theme: {
       dark: true,
       colors: {
-        primary: '#ff0000',
-        accent: '#00ff00',
-        secondary: '#0000ff',
-        success: '#00ff00',
-        info: '#00ffff',
-        warning: '#ffff00',
-      }
+        light: {
+          background: '#161616',
+          surface: '#ffffff',
+          text: '#161616',
+          primary: '#68e700',
+        },
+        dark: {
+          background: '#ffffff',
+          surface: '#161616',
+          text: '#ffffff',
+          primary: '#68e700',
+        },
+        // Weitere Themes hier definieren
+      },
     }
   })

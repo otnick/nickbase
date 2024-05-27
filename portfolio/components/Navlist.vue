@@ -7,7 +7,7 @@ const colorMode = useColorMode();
 <template>
     <div :class="colorMode.preference">
         <div class="nav bg-background">
-            <div class="nav__content">
+            <div class="nav__content ">
                 <div class="nav__link-row">
                     <NuxtLink to="/" class="nav__link">Home</NuxtLink>
                 </div>
