@@ -1,20 +1,25 @@
-<script lang="ts">
+<script setup lang="ts">
+
+const colorMode = useColorMode();
+
 </script>
 
 <template>
-    <div class="topbar">
-        <div class="marquee">
-            <div class="marquee__content">
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-            </div>
-            <div class="marquee__content">
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
-                $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+    <div :class="colorMode.preference">
+        <div class="topbar">
+            <div class="marquee">
+                <div class="marquee__content">
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                </div>
+                <div class="marquee__content">
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                    $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO $NICK SCHUMACHER $PORTFOLIO
+                </div>
             </div>
         </div>
     </div>
@@ -23,8 +28,6 @@
 <style scoped>
 .topbar {
     width: 100%;
-    background-color: rgb(22, 22, 22);
-    color: rgb(232, 243, 241);
     font-size: 24px;
     white-space: nowrap;
     overflow: hidden;
@@ -32,7 +35,19 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 2px solid white;
+    font-family: 'Pixel', sans-serif;
+}
+
+.dark .topbar {
+    background-color: rgb(22, 22, 22);
+    color: rgb(232, 243, 241);
+    border-bottom: 2px solid rgb(232, 243, 241);
+}
+
+.light .topbar {
+    background-color: rgb(232, 243, 241);
+    color: rgb(22, 22, 22);
+    border-bottom: 2px solid rgb(22, 22, 22);
 }
 
 .marquee {

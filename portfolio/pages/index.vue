@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+
 const colorMode = useColorMode();
 
 const scrolling = ref(false);
@@ -34,6 +35,15 @@ const handleScroll = () => {
     }
 };
 
+const scrollDown = () => {
+    const maxScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo({
+        top: maxScrollHeight,
+        behavior: 'smooth',
+    });
+};
+
+
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
@@ -45,37 +55,40 @@ onUnmounted(() => {
 
 <template>
     <Topbar />
-    <div class="w-full h-full background bg-background">
-        <div class="bg-white">
-            <div class="mx-5 page-content custom-height">
-                <Navlist class="top-10 right-10 fixed" />
-                <div class="welcome-list mt-60">
-                    <div class="hover-text">welcome</div>
-                    <div class="hover-text">to nicks</div>
-                    <div class="hover-text">portfolio</div>
-                    <div class="typing-line">|</div>
+    <Navlist class="top-10 right-10 fixed" />
+    <div :class="colorMode.preference">
+        <div class="w-full h-full">
+            <div class=" background">
+                <div class="mx-5 page-content custom-height">
+                    <div class="welcome-list mt-60 mb-52">
+                        <div class="hover-text">welcome</div>
+                        <div class="hover-text">to nicks</div>
+                        <div class="hover-text">portfolio</div>
+                        <div class="typing-line">|</div>
+                    </div>
+                    <button @click="scrollDown">
+                        <div class="scroll-container">
+                            <div class="">scroll down</div>
+                            <div class="">\/</div>
+                        </div>
+                    </button>
                 </div>
-                <div class="scroll-container">
-                    <div class=" mt-52 ">scroll down</div>
-                    <div class="">\/</div>
-                    <p>Current mode: {{$colorMode.preference}}</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-2">
-                <div class="row-span-4">
-                    <div class="ms-5 person-content">
-                        <div class="person-text">
-                            <div>nick schumacher</div>
-                            <div>abitur 2019 - brake</div>
-                            <div>medieninformatik bachelor 2021 - * - lübeck</div>
+                <div class="grid grid-cols-2">
+                    <div class="row-span-4">
+                        <div class="ms-5 person-content">
+                            <div class="person-text">
+                                <div>nick schumacher</div>
+                                <div>abitur 2019 - brake</div>
+                                <div>medieninformatik bachelor 2021 - * - lübeck</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row-span-4">
-                    <div class="me-5 projekt-content">
-                        <div>handi</div>
-                        <div>fishing app</div>
-                        <div>svelte & django</div>
+                    <div class="row-span-4">
+                        <div class="me-5 projekt-content">
+                            <div>handi</div>
+                            <div>fishing app</div>
+                            <div>svelte & django</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,10 +97,14 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.background {
-    
+.dark .background {
+    background-color: rgb(232, 243, 241);
 }
-.page-content {
+.light .background {
+    background-color: rgb(22, 22, 22);
+}
+
+.page-content{
     margin-top: 36px;
     display: flex;
     flex-direction: column;
@@ -95,8 +112,17 @@ onUnmounted(() => {
     align-items: center;
     height: calc(100vh - 36px);
     border-radius: 8px;
+}
+.dark .page-content {
+    color: rgb(232, 243, 241);
     border: 2px solid #ffffff;
     background-color: rgb(22, 22, 22);
+}
+
+.light .page-content {
+    color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
 }
 
 .person-content {
@@ -105,12 +131,21 @@ onUnmounted(() => {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: rgb(232, 243, 241);
     transition: color 0.5s;
-    background-color: rgb(22, 22, 22);
     border-radius: 8px;
-    border: 2px solid #ffffff;
     height: calc(100vh - 36px);
+}
+
+.dark .person-content {
+    color: rgb(232, 243, 241);
+    border: 2px solid rgb(232, 243, 241);
+    background-color: rgb(22, 22, 22);
+}
+
+.light .person-content {
+    color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
 }
 
 .projekt-content {
@@ -119,19 +154,27 @@ onUnmounted(() => {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: rgb(232, 243, 241);
     transition: color 0.5s;
-    background-color: rgb(22, 22, 22);
     border-radius: 8px;
-    border: 2px solid #ffffff;
     height: calc(100vh - 36px);
+}
+
+.dark .projekt-content {
+    color: rgb(232, 243, 241);
+    border: 2px solid rgb(232, 243, 241);
+    background-color: rgb(22, 22, 22);
+}
+
+.light .projekt-content {
+    color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
 }
 
 
 .hover-text {
     font-size: 24px;
     font-weight: bold;
-    color: rgb(232, 243, 241);
     text-align: center;
     margin-top: 20px;
     transition: color 0.5s;
@@ -143,7 +186,6 @@ onUnmounted(() => {
 .typing-line {
     font-size: 24px;
     font-weight: bold;
-    color: rgb(232, 243, 241);
     text-align: center;
     margin-top: 20px;
     animation: typing 1s infinite;
@@ -168,7 +210,7 @@ onUnmounted(() => {
     align-items: center;
     margin-top: 20px;
     font-weight: bold;
-    color: rgb(232, 243, 241);
     transition: color 0.5s;
+    font-family: 'Pixel', sans-serif;
 }
 </style>

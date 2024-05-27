@@ -6,7 +6,7 @@ const colorMode = useColorMode();
 
 <template>
     <div :class="colorMode.preference">
-        <div class="nav bg-background">
+        <div class="nav">
             <div class="nav__content ">
                 <div class="nav__link-row">
                     <NuxtLink to="/" class="nav__link">Home</NuxtLink>
@@ -14,11 +14,8 @@ const colorMode = useColorMode();
                 <div class="nav__link-row">
                     <NuxtLink to="/projekte" class="nav__link">Projekte</NuxtLink>
                 </div>
-                <div class="nav__link-row">
-                    <NuxtLink to="https://github.com/otnick" class="nav__link" target="_blank">GitHub</NuxtLink>
-                </div>
                 <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="nav__link-row">
-                    Toggle Mode
+                    Toggle Theme
                 </button>
             </div>
         </div>
@@ -46,5 +43,15 @@ const colorMode = useColorMode();
 }
 .nav__link-row:hover { 
     color: rgb(104, 231, 0);
+}
+
+.dark .nav__content {
+    background-color: rgba(22, 22, 22, 0.027);
+    color: rgb(232, 243, 241);
+}
+
+.light .nav__content {
+    background-color: rgba(232, 243, 241, 0.123);
+    color: rgb(22, 22, 22);
 }
 </style>
