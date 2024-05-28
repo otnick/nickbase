@@ -38,10 +38,14 @@ const scrollDown = () => {
                     </div>
                     <div class="row-span-4">
                         <div class="ms-5 person-content">
-                            <div class="person-text">
-                                <div>nick schumacher</div>
-                                <div>abitur 2019 - brake</div>
-                                <div>medieninformatik bachelor 2021 - * - lübeck</div>
+                            <div class="person-text ms-10">
+                                <div class="hover-text">
+                                    <div>terror</div>
+                                    <div>nightmare</div>
+                                    <div>towers</div>
+                                </div>
+                                <div class=" font-bold">javaFX</div>
+                                <img src="../../public/unit_red.png" alt="terror-nightmare-towers unit" style=" height: 64px;"/>
                             </div>
                         </div>
                     </div>
@@ -96,7 +100,7 @@ const scrollDown = () => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:start;
     font-weight: bold;
     transition: color 0.5s;
     border-radius: 8px;
