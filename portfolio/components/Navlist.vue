@@ -12,7 +12,7 @@ const colorMode = useColorMode();
                     <NuxtLink to="/" class="nav__link">Home</NuxtLink>
                 </div>
                 <div class="nav__link-row">
-                    <NuxtLink to="/projekte" class="nav__link">Projekte</NuxtLink>
+                    <NuxtLink to="/projekte/overview" class="nav__link">Projekte</NuxtLink>
                 </div>
                 <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="nav__link-row">
                     Toggle Theme

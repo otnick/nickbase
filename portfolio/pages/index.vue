@@ -97,6 +97,9 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.welcome-list{
+    transition: color 0.5s;
+}
 .dark .background {
     background-color: rgb(232, 243, 241);
 }

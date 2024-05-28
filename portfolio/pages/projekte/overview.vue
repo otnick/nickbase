@@ -9,7 +9,6 @@ const scrollDown = () => {
         behavior: 'smooth',
     });
 };
-
 </script>
 
 <template>
@@ -28,13 +27,13 @@ const scrollDown = () => {
                         </div>
                     </div>
                     <div class="col-span-1">
-                        <div class="page-content me-5">
-                            <div class="hover-text ms-20">
-                                    <NuxtLink to="https://github.com/otnick" class="github" target="_blank">
-                                        <div >github</div>
-                                        <div>/otnick</div>
-                                    </NuxtLink>
-                                </div>
+                        <div class="github-content me-5">
+                            <div class="hover-text ms-20 mb-20">
+                                <NuxtLink to="https://github.com/otnick" class="github" target="_blank">
+                                    <div >github</div>
+                                    <div>/otnick</div>
+                                </NuxtLink>
+                            </div>
                         </div>
                     </div>
                     <div class="row-span-4">
@@ -79,6 +78,7 @@ const scrollDown = () => {
     height: calc(75vh - 36px);
     border-radius: 8px;
     justify-content: left;
+    align-items: end;
 }
 .dark .page-content {
     color: rgb(232, 243, 241);
@@ -181,10 +181,47 @@ const scrollDown = () => {
     font-family: 'Pixel', sans-serif;
 }
 
-.github {
-    display:flex;
-    flex-direction: column;
-    font-weight: bold;
+.github-content{
+    margin-top: 36px;
+    height: calc(75vh - 36px);
+    border-radius: 8px;
+    justify-content: left;
+    align-items: end;
     transition: color 0.5s;
+    display: flex;
+}
+.dark .github-content {
+    color: rgb(232, 243, 241);
+    border: 2px solid #ffffff;
+    background-color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
+    --dot-bg: rgb(22, 22, 22);
+  --dot-color: rgb(232, 243, 241);
+  --dot-size: 2px;
+  --dot-space: 22px;
+	background:
+		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		var(--dot-color);
+    
+}
+
+.light .github-content {
+    color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
+    --dot-bg: rgb(232, 243, 241);
+  --dot-color: rgb(22, 22, 22);
+  --dot-size: 2px;
+  --dot-space: 22px;
+	background:
+		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		var(--dot-color);
+}
+
+.github {
+    font-weight: bold;
 }
 </style>
