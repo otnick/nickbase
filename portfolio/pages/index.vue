@@ -115,11 +115,12 @@ onUnmounted(() => {
     align-items: center;
     height: calc(100vh - 36px);
     border-radius: 8px;
+    
 }
 .dark .page-content {
     color: rgb(232, 243, 241);
     border: 2px solid #ffffff;
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(22, 22, 22);  
 }
 
 .light .page-content {

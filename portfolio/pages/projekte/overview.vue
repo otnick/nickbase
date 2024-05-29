@@ -20,7 +20,7 @@ const scrollDown = () => {
                 <div class="grid grid-cols-3">
                     <div class="col-span-2">
                         <div class="page-content ms-5">
-                            <div class="ms-20">
+                            <div class="ms-20 mt-56">
                                 <div class="hover-text">portfolio</div>
                                 <div class="hover-text">nick schumacher</div>
                             </div>
@@ -37,17 +37,19 @@ const scrollDown = () => {
                         </div>
                     </div>
                     <div class="row-span-4">
-                        <div class="ms-5 person-content">
-                            <div class="person-text ms-10">
-                                <div class="hover-text">
-                                    <div>terror</div>
-                                    <div>nightmare</div>
-                                    <div>towers</div>
+                        <NuxtLink to="/projekte/tnt">
+                            <div class="ms-5 person-content hover-text">
+                                <div class="person-text ms-10">
+                                    <div class="">
+                                        <div>terror</div>
+                                        <div>nightmare</div>
+                                        <div>towers</div>
+                                    </div>
+                                    <div class=" font-bold">javaFX</div>
+                                    <img src="../../public/unit_red.png" alt="terror-nightmare-towers unit" style=" height: 64px;"/>
                                 </div>
-                                <div class=" font-bold">javaFX</div>
-                                <img src="../../public/unit_red.png" alt="terror-nightmare-towers unit" style=" height: 64px;"/>
                             </div>
-                        </div>
+                        </NuxtLink>
                     </div>
                     <div class="row-span-4">
                         <div class="projekt-content">
@@ -147,7 +149,6 @@ const scrollDown = () => {
     font-size: 56px;
     font-weight:800;
     text-align:start;
-    margin-top: 40px;
     transition: color 0.5s;
 }
 .hover-text:hover {
@@ -201,9 +202,9 @@ const scrollDown = () => {
     border: 2px solid rgb(22, 22, 22);
     background-color: rgb(232, 243, 241);
     --dot-bg: rgb(22, 22, 22);
-  --dot-color: rgb(232, 243, 241);
-  --dot-size: 2px;
-  --dot-space: 22px;
+    --dot-color: rgb(232, 243, 241);
+    --dot-size: 2px;
+    --dot-space: 22px;
 	background:
 		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
@@ -216,13 +217,13 @@ const scrollDown = () => {
     border: 2px solid rgb(22, 22, 22);
     background-color: rgb(232, 243, 241);
     --dot-bg: rgb(232, 243, 241);
-  --dot-color: rgb(22, 22, 22);
-  --dot-size: 2px;
-  --dot-space: 22px;
-	background:
-		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-		var(--dot-color);
+    --dot-color: rgb(22, 22, 22);
+    --dot-size: 2px;
+    --dot-space: 22px;
+        background:
+            linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+            linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+            var(--dot-color);
 }
 
 .github {
