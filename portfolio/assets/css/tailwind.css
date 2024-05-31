@@ -18,12 +18,27 @@
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
   }
 
+  .dark h1{
+    color: #fff;
+  }
+
+  .light h1{
+    color: #333;}
+
   h2 {
     font-size: 1.5em; /* Beispiel für eine größere Schriftgröße */
     margin-block-start: 0.5em; /* Beispiel für einen kleineren oberen Rand */
     margin-block-end: 0.5em; /* Beispiel für einen kleineren unteren Rand */
     color: #333; /* Beispiel für eine andere Textfarbe */
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
+  }
+
+  .dark h2{
+    color: #fff;
+  }
+
+  .light h2{
+    color: #333;
   }
 
   h3 {
@@ -34,12 +49,28 @@
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
   }
 
+  .dark h3{
+    color: #fff;
+  }
+
+  .light h3{
+    color: #333;
+  }
+
   h4 {
     font-size: 1.1em; /* Beispiel für eine größere Schriftgröße */
     margin-block-start: 0.5em; /* Beispiel für einen kleineren oberen Rand */
     margin-block-end: 0.5em; /* Beispiel für einen kleineren unteren Rand */
     color: #333; /* Beispiel für eine andere Textfarbe */
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
+  }
+
+  .dark h4{
+    color: #fff;
+  }
+
+  .light h4{
+    color: #333;
   }
 
   h5 {
@@ -50,6 +81,14 @@
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
   }
 
+  .dark h5{
+    color: #fff;
+  }
+
+  .light h5{
+    color: #333;
+  }
+
   h6 {
     font-size: 1em; /* Beispiel für eine größere Schriftgröße */
     margin-block-start: 0.5em; /* Beispiel für einen kleineren oberen Rand */
@@ -58,8 +97,20 @@
     font-weight: bold; /* Beispiel für ein normales Schriftgewicht */
   }
 
+  .dark h6{
+    color: #fff;
+  }
+
+  .light h6{
+    color: #333;
+  }
+
   ul {
     list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
   }
   li {
     display: list-item;

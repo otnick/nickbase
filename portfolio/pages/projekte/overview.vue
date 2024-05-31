@@ -59,11 +59,13 @@ const scrollDown = () => {
                         </div>
                     </div>
                     <div class="row-span-4">
-                        <div class="me-5 projekt-content">
-                            <div class="hover-text">3D</div>
-                            <div>fishing app</div>
-                            <div>svelte & django</div>
-                        </div>
+                        <NuxtLink to="/projekte/handi">
+                            <div class="me-5 projekt-content hover-text">
+                                <div class="">3D</div>
+                                <div>fishing app</div>
+                                <div>svelte & django</div>
+                            </div>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>

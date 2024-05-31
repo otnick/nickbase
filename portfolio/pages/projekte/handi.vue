@@ -126,15 +126,6 @@ const colorMode = useColorMode();
     margin-top: 20px;
     transition: color 0.5s;
 }
-
-.dark .hover-text{
-  color: rgb(232, 243, 241);
-}
-
-.light .hover-text{
-  color: rgb(22, 22, 22);
-}
-
 .hover-text:hover {
     color: rgb(104, 231, 0);
 }
