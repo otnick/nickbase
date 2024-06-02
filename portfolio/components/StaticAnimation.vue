@@ -25,7 +25,7 @@
         scene.add(directionalLight);
   
         const loader = new GLTFLoader();
-        loader.load('../assets/models/Hecht.glb', (gltf) => {
+        loader.load('/portfolio/public/Hecht.glb', (gltf) => {
           const model = gltf.scene;
           scene.add(model);
   
