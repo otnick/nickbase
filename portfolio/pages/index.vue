@@ -54,6 +54,15 @@ onUnmounted(() => {
 </script>
 
 <template>
+    <head>
+        <title>Nick Schumacher - Portfolio</title>
+        <meta>
+            <hid>Beschreibung</hid>
+            <name>beschreibung</name>
+            <content>Portfolio von Nick Schumacher</content>
+        </meta>
+    </head>
+
     <Topbar />
     <Navlist class="top-10 right-10 fixed" />
     <div :class="colorMode.preference">
