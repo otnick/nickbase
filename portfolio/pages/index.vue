@@ -54,14 +54,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <head>
-        <title>Nick Schumacher - Portfolio</title>
-        <meta>
-            <hid>Beschreibung</hid>
-            <name>beschreibung</name>
-            <content>Portfolio von Nick Schumacher</content>
-        </meta>
-    </head>
 
     <Topbar />
     <Navlist class="top-10 right-10 fixed" />
@@ -69,14 +61,14 @@ onUnmounted(() => {
         <div class="w-full h-full">
             <div class=" background">
                 <div class="mx-5 page-content custom-height">
-                    <div class="welcome-list mt-60 mb-52">
+                    <div class="welcome-list mt-60 mb-48">
                         <div class="hover-text">welcome</div>
                         <div class="hover-text">to nicks</div>
                         <div class="hover-text">portfolio</div>
                         <div class="typing-line">|</div>
                     </div>
                     <button @click="scrollDown">
-                        <div class="scroll-container">
+                        <div class="scroll-container mb-10">
                             <div class="">scroll down</div>
                             <div class="">\/</div>
                         </div>
@@ -85,19 +77,21 @@ onUnmounted(() => {
                 <div class="grid grid-cols-2">
                     <div class="row-span-4">
                         <div class="ms-5 person-content">
-                            <div class="person-text">
-                                <div>nick schumacher</div>
+                            <div class="person-text ">
+                                <div class="description-text">nick schumacher</div>
                                 <div>abitur 2019 - brake</div>
                                 <div>medieninformatik bachelor 2021 - * - lübeck</div>
                             </div>
                         </div>
                     </div>
                     <div class="row-span-4">
-                        <div class="me-5 projekt-content">
-                            <div>handi</div>
+                        <NuxtLink to="/projekte/handi">
+                        <div class="me-5 projekt-content hover-text">
+                            <div class="description-text">handi</div>
                             <div>fishing app</div>
                             <div>svelte & django</div>
                         </div>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
@@ -189,7 +183,6 @@ onUnmounted(() => {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    margin-top: 20px;
     transition: color 0.5s;
 }
 .hover-text:hover {
@@ -202,6 +195,13 @@ onUnmounted(() => {
     text-align: center;
     margin-top: 20px;
     animation: typing 1s infinite;
+}
+
+.description-text {
+    font-size: 56px;
+    font-weight:800;
+    text-align:start;
+    transition: color 0.5s;
 }
 
 @keyframes typing {
@@ -221,7 +221,6 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     font-weight: bold;
     transition: color 0.5s;
     font-family: 'Pixel', sans-serif;

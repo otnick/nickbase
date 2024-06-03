@@ -45,25 +45,34 @@ const scrollDown = () => {
                                         <div>nightmare</div>
                                         <div>towers</div>
                                     </div>
-                                    <div class=" font-bold">javaFX</div>
+                                    <p class=" subtitle">javaFX</p>
+                                    <p class="subtitle">tabletop game</p>
                                     <img src="../../public/unit_red.png" alt="terror-nightmare-towers unit" style=" height: 64px;"/>
                                 </div>
                             </div>
                         </NuxtLink>
                     </div>
                     <div class="row-span-4">
-                        <div class="projekt-content">
-                            <div>handi</div>
-                            <div>fishing app</div>
-                            <div>svelte & django</div>
-                        </div>
+                        <NuxtLink to="/projekte/handi">
+                            <div class="person-content hover-text">
+                                <div class="mx-10">
+                                    <div class="">handi</div>
+                                    <p class="subtitle">svelte & django</p>
+                                    <p class="subtitle">website    </p>
+                                    <img src="/handi.png" alt="handi landing page"/>
+                                    <p class="subtitle">tool for fishing record</p>
+                                    <p class="subtitle">and displaying in pokebox</p>
+                                </div>
+                            </div>
+                        </NuxtLink>
                     </div>
                     <div class="row-span-4">
-                        <NuxtLink to="/projekte/handi">
+                        <NuxtLink to="/projekte/showcase">
                             <div class="me-5 projekt-content hover-text">
                                 <div class="">3D</div>
-                                <div>fishing app</div>
-                                <div>svelte & django</div>
+                                <div>showcase</div>
+                                <p class="subtitle">pokebox</p>
+                                <p class="subtitle">three.js</p>
                             </div>
                         </NuxtLink>
                     </div>
@@ -230,5 +239,9 @@ const scrollDown = () => {
 
 .github {
     font-weight: bold;
+}
+
+.subtitle{
+    font-size: 24px;
 }
 </style>

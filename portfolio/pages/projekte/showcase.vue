@@ -1,8 +1,13 @@
 <template>
     <Topbar />
-    <Navbar class="top-10 right-10 fixed" />    
-    <h1 class="hover-text fixed bottom-10 left-10">3d-showcase</h1>
-    <div ref="threeContainer" class="three-container"></div>
+    <div class="dark">
+        <NuxtLink to="/projekte/overview/" class="top-10 left-10 fixed">
+            <div class="hover-text static-color">Zurück</div>
+        </NuxtLink>
+        <NavlistDisabled class="top-10 right-10 fixed static-color" />
+        <h1 class="hover-text fixed bottom-10 left-10 static-color">3d-showcase</h1>
+        <div ref="threeContainer" class="three-container"></div>
+    </div>
   </template>
   
   <script>
@@ -69,6 +74,10 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+  }
+
+  .static-color{
+    color: rgb(232, 243, 241);
   }
 
   .dark .background {
@@ -145,11 +154,13 @@
   
   
   .hover-text {
-      font-size: 56px;
-      font-weight:800;
-      text-align:start;
-      transition: color 0.5s;
-  }
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    transition: color 0.5s;
+    }
+
   .hover-text:hover {
       color: rgb(104, 231, 0);
   }

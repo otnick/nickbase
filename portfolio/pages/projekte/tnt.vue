@@ -13,8 +13,9 @@ const colorMode = useColorMode();
             <div class=" background">
                 <div class="mx-56 page-content custom-height">
                     <div class="welcome-list">
-                      <div class="prose">
+                      <div class="prose mx-10 mb-10">
                         <ContentDoc />
+                        <img src="/tnt_img.png" alt="tnt-board"/>
                     </div>
                     </div>
                 </div>
@@ -56,7 +57,6 @@ const colorMode = useColorMode();
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 36px);
     border-radius: 8px;
     
 }
