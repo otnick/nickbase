@@ -46,12 +46,10 @@ const colorMode = useColorMode();
 }
 
 .dark .nav__content {
-    background-color: rgba(22, 22, 22, 0.027);
     color: rgb(232, 243, 241);
 }
 
 .light .nav__content {
-    background-color: rgba(232, 243, 241, 0.123);
     color: rgb(22, 22, 22);
 }
 </style>

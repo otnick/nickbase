@@ -24,14 +24,20 @@ const handleScroll = () => {
 
     const personContent = document.querySelector('.person-content');
     if (personContent) {
-        const opacity = window.scrollY / maxScrollHeight;
+        const opacity = window.scrollY / (maxScrollHeight / 2);
         (personContent as HTMLDivElement).style.opacity = opacity.toString();
     }
 
     const projektContent = document.querySelector('.projekt-content');
     if (projektContent) {
-        const opacity = window.scrollY / maxScrollHeight;
+        const opacity = window.scrollY / (maxScrollHeight / 2);
         (projektContent as HTMLDivElement).style.opacity = opacity.toString();
+    }
+
+    const formContent = document.querySelector('.form-content');
+    if (formContent) {
+        const opacity = window.scrollY / (maxScrollHeight);
+        (formContent as HTMLDivElement).style.opacity = opacity.toString();
     }
 };
 
@@ -94,7 +100,7 @@ onUnmounted(() => {
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mx-5 page-content custom-height">
+                <div class="mx-5 page-content custom-height form-content">
                     <div class="welcome-list mt-60 mb-48 lg:w-1/3">
                         <!-- <div class="hover-text">Kontaktformular</div>
                         <div class="typing-line">|</div> -->
@@ -281,5 +287,27 @@ onUnmounted(() => {
     color: rgb(22, 22, 22);
     background-color: rgb(104, 231, 0);
 }
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 36px);
+    border-radius: 8px;
+    
+}
+.form .page-content {
+    color: rgb(232, 243, 241);
+    border: 2px solid #ffffff;
+    background-color: rgb(22, 22, 22);  
+}
+
+.form .page-content {
+    color: rgb(22, 22, 22);
+    border: 2px solid rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
+}
+
 
 </style>
