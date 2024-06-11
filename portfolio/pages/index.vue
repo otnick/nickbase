@@ -60,7 +60,7 @@ onUnmounted(() => {
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
-                <div class="mx-5 page-content custom-height">
+                <div class="mx-5 page-content custom-height mt-9">
                     <div class="welcome-list mt-60 mb-48">
                         <div class="hover-text">welcome</div>
                         <div class="hover-text">to nicks</div>
@@ -94,6 +94,29 @@ onUnmounted(() => {
                         </NuxtLink>
                     </div>
                 </div>
+                <div class="mx-5 page-content custom-height">
+                    <div class="welcome-list mt-60 mb-48 lg:w-1/3">
+                        <!-- <div class="hover-text">Kontaktformular</div>
+                        <div class="typing-line">|</div> -->
+                        <section class="">
+                            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
+                                <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Lets get in touch!</p>
+                                <form action="#" class="space-y-8">
+                                    <div>
+                                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+                                        <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+                                    </div>
+                                    <button type="submit" class="py-3 px-5 text-sm font-medium text-center custom-button">Send message</button>
+                                </form>
+                            </div>
+                            </section>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -111,7 +134,6 @@ onUnmounted(() => {
 }
 
 .page-content{
-    margin-top: 36px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -225,4 +247,39 @@ onUnmounted(() => {
     transition: color 0.5s;
     font-family: 'Pixel', sans-serif;
 }
+
+.custom-button{
+    font-weight: bold;
+    background-color: rgb(104, 231, 0);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 20px;
+    color: rgb(22, 22, 22);
+}
+
+.custom-button:hover {
+    background-color: rgb(104, 231, 0);
+    color: rgb(104, 231, 0);
+}
+
+.dark .custom-button {
+    color: rgb(22, 22, 22);
+    background-color: rgb(232, 243, 241);
+}
+
+.light .custom-button {
+    color: rgb(232, 243, 241);
+    background-color: rgb(22, 22, 22);
+}
+
+.dark .custom-button:hover {
+    color: rgb(232, 243, 241);
+    background-color: rgb(104, 231, 0);
+}
+
+.light .custom-button:hover {
+    color: rgb(22, 22, 22);
+    background-color: rgb(104, 231, 0);
+}
+
 </style>
