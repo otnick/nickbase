@@ -43,7 +43,7 @@ onUnmounted(() => {
 
 const message = ref('');
 const email = ref('');
-const submitForm = (event: Event) => {
+const submitForm = async (event: Event) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Simple validation check
@@ -60,11 +60,11 @@ const submitForm = (event: Event) => {
     console.log('Email:', email.value);
     console.log('Message:', message.value);
 
-    // Here you could also make an API call to send the form data to a server, for example
-    // axios.post('/api/contact', { email: email.value, message: message.value })
-    //   .then(response => console.log(response))
-    //   .catch(error => console.error(error));
+    // use api
+    const { data } = await useFetch('/api/message')
+    console.log(data)
 };
+
 </script>
 
 <template>
