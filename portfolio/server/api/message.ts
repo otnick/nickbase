@@ -5,12 +5,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
   await db.insert(contact).values({
-    email: body.get('email'),
-    message: body.get('message')
+    email: body.email,
+    message: body.message
   }).execute();
-
-  return {
-    email: body.get('email'),
-    message: body.get('message')
-  }
 })

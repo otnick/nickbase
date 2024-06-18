@@ -43,34 +43,40 @@ onUnmounted(() => {
 
 const message = ref('');
 const email = ref('');
-const submitForm = async (event: Event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
 
-    // Simple validation check
-    if (email.value === '' || message.value === '') {
-        alert('Please fill in all required fields.');
-        return;
-    } else if(message.value.length < 30){
-        alert('Message must be at least 30 characters long.');
-        document.getElementById('messageInput')?.focus();
-        return;
+function handleSubmit() {
+    setTimeout(() => {
+        showToast('success', 'Message sent successfully!');
+        clearFormFields(); // Felder leeren
+    }, 500); // Verzögerung hinzugefügt, um das Toast anzuzeigen
+}
+
+function clearFormFields() {
+    const emailInput = document.getElementById('email') as HTMLInputElement | null;
+    const messageInput = document.getElementById('messageInput') as HTMLTextAreaElement | null;
+
+    // Überprüfen, ob die Elemente existieren, bevor auf die 'value' Eigenschaft zugegriffen wird
+    if (emailInput) {
+        emailInput.value = '';
     }
+    if (messageInput) {
+        messageInput.value = '';
+    }
+}
 
-    // Process form data
-    console.log('Email:', email.value);
-    console.log('Message:', message.value);
+const toastType = ref<'success' | 'error'>('success');
+const toastMessage = ref('');
+const toastVisible = ref(false);
 
-    // use api/message
-    const response = await fetch('/api/message', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email: email.value,
-            message: message.value,
-        }),
-    });
+const showToast = (type: 'success' | 'error', message: string) => {
+    toastType.value = type;
+    toastMessage.value = message;
+    toastVisible.value = true;
+
+    // Verstecke den Toast nach 3 Sekunden automatisch
+    setTimeout(() => {
+    toastVisible.value = false;
+    }, 3000);
 };
 
 </script>
@@ -79,6 +85,7 @@ const submitForm = async (event: Event) => {
 
     <Topbar />
     <Navlist class="top-10 right-10 fixed" />
+    <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
@@ -124,14 +131,14 @@ const submitForm = async (event: Event) => {
                             <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
                                 <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Lets get in touch!</p>
-                                <form action="/api/message" class="space-y-8" method="post">
+                                <form action="/api/message" class="space-y-8" method="post" id="contact" @submit="showToast('success', 'Message sent successfully!')">
                                     <div>
                                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                                        <input name="email" type="email" v-model="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
+                                        <input name="email" type="email"  id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
                                     </div>
                                     <div class="sm:col-span-2">
                                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                                        <textarea name="message" v-model="message" id="messageInput" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a message..."></textarea>
+                                        <textarea name="message" id="messageInput" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a message..."></textarea>
                                     </div>
                                     <button type="submit" class="py-3 px-5 text-sm font-medium text-center custom-button">Send message</button>
                                 </form>
