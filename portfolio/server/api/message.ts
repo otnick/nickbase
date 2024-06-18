@@ -1,5 +1,7 @@
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
+  const body = await readFormData(event);
     return {
-      hello: 'world'
+      email: body.get('email'),
+      message: body.get('message')
     }
 })
