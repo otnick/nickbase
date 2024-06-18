@@ -17,9 +17,6 @@ const colorMode = useColorMode();
                 <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="nav__link-row">
                     Toggle Theme
                 </button>
-                <div class="nav__link-row">
-                    Login
-                </div>
             </div>
         </div>
     </div>
