@@ -17,19 +17,13 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@nuxt/content',
-    '@sidebase/nuxt-auth',
-  ],
-  
-  colorMode: {
-    classSuffix: ''
-  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxt/content', '@sidebase/nuxt-auth'],
+  colorMode: { classSuffix: '' },
   css: ['@/assets/css/tailwind.css'],
-  tailwindcss: {
-    configPath: 'tailwind.config.js',
-  },
+  tailwindcss: { configPath: 'tailwind.config.js',},
+  auth: {
+    provider: {
+        type: 'authjs'
+    }
+},
 })
-

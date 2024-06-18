@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const { status, data, signOut, signIn } = useAuth()
 const colorMode = useColorMode();
 
 </script>
@@ -8,18 +8,15 @@ const colorMode = useColorMode();
     <div :class="colorMode.preference">
         <div class="nav">
             <div class="nav__content ">
-                <div class="nav__link-row">
-                    <NuxtLink to="/" class="nav__link">Home</NuxtLink>
+                <div class="nav__link-row" v-if="status === 'authenticated'">
+                    Hello {{ data?.user?.name }}!
                 </div>
-                <div class="nav__link-row">
-                    <NuxtLink to="/projekte/overview" class="nav__link">Projekte</NuxtLink>
-                </div>
-                <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="nav__link-row">
-                    Toggle Theme
+                <button class="nav__link-row" v-if="status === 'authenticated'" @click="signOut({ callbackUrl: '/' })">
+                    Logout
                 </button>
-                <div class="nav__link-row">
+                <button class="nav__link-row" v-else @click="signIn">
                     Login
-                </div>
+                </button>
             </div>
         </div>
     </div>

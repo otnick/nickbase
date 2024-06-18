@@ -79,19 +79,21 @@ const showToast = (type: 'success' | 'error', message: string) => {
     toastVisible.value = false;
     }, 3000);
 };
+const { data, status, getCsrfToken, getProviders } = useAuth()
+const providers = await getProviders()
 
 </script>
 
 <template>
 
     <Topbar />
-    <Navlist class="top-10 right-10 fixed" />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
                 <div class="mx-5 page-content custom-height mt-9">
                     <div class="welcome-list mt-60 mb-48">
+                        <div v-if="providers"><span>Providers:</span> {{ providers }}</div>
                         <div class="hover-text">welcome</div>
                         <div class="hover-text">to nicks</div>
                         <div class="hover-text">portfolio</div>
