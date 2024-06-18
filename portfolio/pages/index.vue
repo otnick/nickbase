@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+const { status, data, signOut, signIn } = useAuth()
 
 
 const colorMode = useColorMode();
@@ -35,14 +36,12 @@ const scrollDown = () => {
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
+    fillMail();
 });
 
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 });
-
-const message = ref('');
-const email = ref('');
 
 function handleSubmit() {
     setTimeout(() => {
@@ -79,8 +78,16 @@ const showToast = (type: 'success' | 'error', message: string) => {
     toastVisible.value = false;
     }, 3000);
 };
-const { data, status, getCsrfToken, getProviders } = useAuth()
-const providers = await getProviders()
+
+// Füllt das E-Mail-Feld mit der E-Mail-Adresse des Benutzers, wenn er über github angemeldet ist
+function fillMail() {
+    if(status.value === 'authenticated') {
+        const emailInput = document.getElementById('email') as HTMLInputElement | null;
+        if (emailInput && data.value?.user?.email) {
+            emailInput.value = data.value?.user?.email;
+        }
+    }
+}
 
 </script>
 
@@ -93,7 +100,6 @@ const providers = await getProviders()
             <div class=" background">
                 <div class="mx-5 page-content custom-height mt-9">
                     <div class="welcome-list mt-60 mb-48">
-                        <div v-if="providers"><span>Providers:</span> {{ providers }}</div>
                         <div class="hover-text">welcome</div>
                         <div class="hover-text">to nicks</div>
                         <div class="hover-text">portfolio</div>

@@ -6,8 +6,8 @@ export default NuxtAuthHandler({
     providers: [
         // @ts-expect-error
         GithubProvider.default({
-           clientId: process.env.GITHUB_CLIENT_ID,
-           clientSecret: process.env.GITHUB_CLIENT_SECRET
+           clientId: 'Ov23litUs1UdKkDyT25u',
+           clientSecret: 'a99de05fdd81fcb6e447e21cb4ebfe0598f5a021'
         }),
         // @ts-expect-error
         CredentialsProvider.default({
