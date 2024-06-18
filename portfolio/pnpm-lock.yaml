@@ -12,7 +12,7 @@ dependencies:
     version: 11.0.0
   drizzle-orm:
     specifier: ^0.31.2
-    version: 0.31.2(@opentelemetry/api@1.8.0)(better-sqlite3@11.0.0)
+    version: 0.31.2(@opentelemetry/api@1.8.0)(@types/better-sqlite3@7.6.10)(better-sqlite3@11.0.0)
   nuxt:
     specifier: ^3.11.2
     version: 3.11.2(@opentelemetry/api@1.8.0)(@unocss/reset@0.60.3)(better-sqlite3@11.0.0)(drizzle-orm@0.31.2)(floating-vue@5.2.2)(unocss@0.60.3)(vite@5.2.11)
@@ -33,6 +33,9 @@ devDependencies:
   '@nuxtjs/tailwindcss':
     specifier: ^6.12.0
     version: 6.12.0
+  '@types/better-sqlite3':
+    specifier: ^7.6.10
+    version: 7.6.10
   drizzle-kit:
     specifier: ^0.22.7
     version: 0.22.7
@@ -2323,6 +2326,11 @@ packages:
       minimatch: 9.0.4
     dev: false
 
+  /@types/better-sqlite3@7.6.10:
+    resolution: {integrity: sha512-TZBjD+yOsyrUJGmcUj6OS3JADk3+UZcNv3NOBqGkM09bZdi28fNZw8ODqbMOLfKCu7RYCO62/ldq1iHbzxqoPw==}
+    dependencies:
+      '@types/node': 20.12.12
+
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
@@ -2358,7 +2366,6 @@ packages:
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
     dependencies:
       undici-types: 5.26.5
-    dev: false
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -3866,7 +3873,7 @@ packages:
         optional: true
     dependencies:
       better-sqlite3: 11.0.0
-      drizzle-orm: 0.31.2(@opentelemetry/api@1.8.0)(better-sqlite3@11.0.0)
+      drizzle-orm: 0.31.2(@opentelemetry/api@1.8.0)(@types/better-sqlite3@7.6.10)(better-sqlite3@11.0.0)
     dev: false
 
   /debug@2.6.9:
@@ -4069,7 +4076,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.31.2(@opentelemetry/api@1.8.0)(better-sqlite3@11.0.0):
+  /drizzle-orm@0.31.2(@opentelemetry/api@1.8.0)(@types/better-sqlite3@7.6.10)(better-sqlite3@11.0.0):
     resolution: {integrity: sha512-QnenevbnnAzmbNzQwbhklvIYrDE8YER8K7kSrAWQSV1YvFCdSQPzj+jzqRdTSsV2cDqSpQ0NXGyL1G9I43LDLg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -4153,6 +4160,7 @@ packages:
         optional: true
     dependencies:
       '@opentelemetry/api': 1.8.0
+      '@types/better-sqlite3': 7.6.10
       better-sqlite3: 11.0.0
     dev: false
 
@@ -8357,7 +8365,6 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: false
 
   /undici@5.28.4:
     resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
