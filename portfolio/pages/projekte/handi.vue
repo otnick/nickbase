@@ -5,9 +5,9 @@ const colorMode = useColorMode();
 <template>
   <Topbar />
   <Navlist class="top-10 right-10 fixed" />
-  <NuxtLink to="/projekte/overview/" class="top-10 left-10 fixed">
-    <div class="hover-text">Zurück</div>
-  </NuxtLink>
+  <NuxtLink to="/projekte/overview" class=" top-96 left-10 fixed">
+            <div class="hover-text static-color">< back</div>
+        </NuxtLink>
   <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
@@ -160,4 +160,9 @@ const colorMode = useColorMode();
     transition: color 0.5s;
     font-family: 'Pixel', sans-serif;
 }
+
+.static-color{
+    color: rgb(232, 243, 241);
+    font-family: 'Pixel', sans-serif;
+  }
 </style>

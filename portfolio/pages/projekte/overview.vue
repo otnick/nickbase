@@ -1,14 +1,40 @@
 <script setup lang="ts">
-
 const colorMode = useColorMode();
+const username = 'otnick';
+const apiUrl = `https://api.github.com/users/${username}`;
 
-const scrollDown = () => {
-    const maxScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({
-        top: maxScrollHeight,
-        behavior: 'smooth',
-    });
-};
+onMounted(() => {
+    fetchGitHubProfile();
+});
+
+// Funktion zum Abrufen und Anzeigen der GitHub-Daten
+async function fetchGitHubProfile() {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Netzwerk-Antwort war nicht okay');
+        }
+        const data = await response.json();
+        console.log("github" + data.value);
+
+        // Profilinformationen anzeigen
+        document.getElementById('profile')!.innerHTML = `
+            <div class="flex flex-col">
+                <div class="flex">
+                    <div>
+                        <p class="">github/</p>
+                        <p class="">${data.login}</p>
+                    </div>
+                    <img src="${data.avatar_url}" alt="${data.login}" class="w-24 h-24 rounded-full ml-4 object-cover mt-5">
+                </div>
+                <p class="text-lg ms-3">${data.public_repos} public repos</p>
+                <p class="text-lg ms-3">${data.followers} followers</p>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Es gab ein Problem mit der Fetch-Operation:', error);
+    }
+}
 </script>
 
 <template>
@@ -30,8 +56,7 @@ const scrollDown = () => {
                         <div class="github-content me-5">
                             <div class="hover-text ms-20 mb-20">
                                 <NuxtLink to="https://github.com/otnick" class="github" target="_blank">
-                                    <div >github</div>
-                                    <div>/otnick</div>
+                                    <div id="profile" class="github-profile flex"></div>
                                 </NuxtLink>
                             </div>
                         </div>
@@ -243,5 +268,14 @@ const scrollDown = () => {
 
 .subtitle{
     font-size: 24px;
+}
+
+.github-profile {
+    display: flex;
+    align-items: center;
+}
+.github-profile img {
+    border-radius: 50%;
+    margin-right: 20px;
 }
 </style>

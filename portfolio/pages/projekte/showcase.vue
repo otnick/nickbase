@@ -1,10 +1,11 @@
 <template>
     <Topbar />
+    <NavlistDisabled class="top-10 right-10 fixed" />
+    <AuthlistDisabled class="top-10 left-10 fixed" />
     <div class="dark">
-        <NuxtLink to="/projekte/overview/" class="top-10 left-10 fixed">
-            <div class="hover-text static-color">Zurück</div>
+        <NuxtLink to="/projekte/overview" class=" top-96 left-10 fixed">
+            <div class="hover-text static-color">< back</div>
         </NuxtLink>
-        <NavlistDisabled class="top-10 right-10 fixed static-color" />
         <h1 class="hover-text fixed bottom-10 left-10 static-color">3d-showcase</h1>
         <div ref="threeContainer" class="three-container"></div>
     </div>
@@ -13,6 +14,9 @@
   <script>
   import * as THREE from 'three';
   import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+  const route = useRoute();
+  const previousPage = route.params.previousPage;
   
   export default {
     mounted() {
@@ -78,6 +82,7 @@
 
   .static-color{
     color: rgb(232, 243, 241);
+    font-family: 'Pixel', sans-serif;
   }
 
   .dark .background {
