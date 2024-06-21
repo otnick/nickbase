@@ -3,7 +3,7 @@
     <NavlistDisabled class="top-10 right-10 fixed" />
     <AuthlistDisabled class="top-10 left-10 fixed" />
     <div class="dark">
-        <NuxtLink to="/projekte/overview" class=" top-96 left-10 fixed">
+        <NuxtLink to="/projekte/overview" class="top-96 left-10 fixed">
             <div class="hover-text static-color">< back</div>
         </NuxtLink>
         <h1 class="hover-text fixed bottom-10 left-10 static-color subtitle">3d-showcase</h1>
