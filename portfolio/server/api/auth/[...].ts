@@ -19,7 +19,7 @@ export default NuxtAuthHandler({
             // You can pass any HTML attribute to the <input> tag through the object.
             credentials: {
               username: { label: 'Username', type: 'text', placeholder: '(hint: nick)' },
-              password: { label: 'Password', type: 'password', placeholder: '(hint: pw)' }
+              password: { label: 'Password', type: 'password', placeholder: '(hint: pw)' },
             },
             authorize (credentials: any) {
               console.warn('ATTENTION: You should replace this with your real providers or credential provider logic! The current setup is not safe')
@@ -28,7 +28,7 @@ export default NuxtAuthHandler({
               // that is false/null if the credentials are invalid.
               // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
       
-              const user = { id: '1', name: 'Nick', username: 'nick', password: 'pw' }
+              const user = { id: '1', name: 'Nick', username: 'nick', password: 'pw', email: 'nick@mail.com' }
       
               if (credentials?.username === user.username && credentials?.password === user.password) {
                 // Any object returned will be saved in `user` property of the JWT

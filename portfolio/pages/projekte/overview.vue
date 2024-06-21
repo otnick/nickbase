@@ -12,7 +12,7 @@ async function fetchGitHubProfile() {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
-            throw new Error('Netzwerk-Antwort war nicht okay');
+            throw new Error('Error fetching data from GitHub API');
         }
         const data = await response.json();
         console.log("github" + data.value);
