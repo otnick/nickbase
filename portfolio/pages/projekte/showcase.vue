@@ -6,7 +6,7 @@
         <NuxtLink to="/projekte/overview" class=" top-96 left-10 fixed">
             <div class="hover-text static-color">< back</div>
         </NuxtLink>
-        <h1 class="hover-text fixed bottom-10 left-10 static-color">3d-showcase</h1>
+        <h1 class="hover-text fixed bottom-10 left-10 static-color subtitle">3d-showcase</h1>
         <div ref="threeContainer" class="three-container"></div>
     </div>
   </template>
@@ -243,5 +243,13 @@
   
   .github {
       font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    transition: color 0.5s;
   }
   </style>

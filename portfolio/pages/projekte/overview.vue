@@ -84,9 +84,9 @@ async function fetchGitHubProfile() {
                                     <div class="">handi</div>
                                     <p class="subtitle">svelte & django</p>
                                     <p class="subtitle">website    </p>
-                                    <img src="/handi.png" alt="handi landing page"/>
                                     <p class="subtitle">tool for fishing record</p>
                                     <p class="subtitle">and displaying in pokebox</p>
+                                    <img src="/handi.png" alt="handi landing page" class="h-48 mt-5"/>
                                 </div>
                             </div>
                         </NuxtLink>
@@ -94,10 +94,12 @@ async function fetchGitHubProfile() {
                     <div class="row-span-4">
                         <NuxtLink to="/projekte/showcase">
                             <div class="me-5 projekt-content hover-text">
-                                <div class="">3D</div>
-                                <div>showcase</div>
-                                <p class="subtitle">pokebox</p>
-                                <p class="subtitle">three.js</p>
+                                <div class="mx-10">
+                                    <div class="">3D</div>
+                                    <div>showcase</div>
+                                    <p class="subtitle">pokebox</p>
+                                    <p class="subtitle">three.js</p>
+                                </div>
                             </div>
                         </NuxtLink>
                     </div>
@@ -121,6 +123,7 @@ async function fetchGitHubProfile() {
     border-radius: 8px;
     justify-content: left;
     align-items: end;
+    transition: color 0.5s;
 }
 .dark .page-content {
     color: rgb(232, 243, 241);
@@ -161,7 +164,7 @@ async function fetchGitHubProfile() {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     font-weight: bold;
     transition: color 0.5s;
     border-radius: 8px;
