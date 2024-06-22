@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useField, useForm } from 'vee-validate';
+import * as Yup from 'yup';
+
 const { status, data, signOut, signIn } = useAuth()
-
-
 const colorMode = useColorMode();
-
 const scrolling = ref(false);
+const schema = Yup.object().shape({
+    email: Yup.string().email('Please enter a valid email').required('Email is required'),
+    message: Yup.string().min(30, 'Message must be at least 30 characters').required('Message is required'),
+});
 
 const handleScroll = () => {
     scrolling.value = window.scrollY > 0;
@@ -43,23 +47,23 @@ onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 });
 
-function handleSubmit() {
-    setTimeout(() => {
-        showToast('success', 'Message sent successfully!');
-        clearFormFields(); // Felder leeren
-    }, 100); // Verzögerung hinzugefügt, um das Toast anzuzeigen
-}
+const { handleSubmit } = useForm({
+    validationSchema: schema,
+});
+
+const { value: email, errorMessage: emailError } = useField('email');
+const { value: message, errorMessage: messageError } = useField('message');
 
 function clearFormFields() {
     const emailInput = document.getElementById('email') as HTMLInputElement | null;
     const messageInput = document.getElementById('messageInput') as HTMLTextAreaElement | null;
 
     // Überprüfen, ob die Elemente existieren, bevor auf die 'value' Eigenschaft zugegriffen wird
-    if (emailInput) {
-        emailInput.value = '';
+    if (email) {
+        email.value = '';
     }
-    if (messageInput) {
-        messageInput.value = '';
+    if (message) {
+        message.value = '';
     }
 }
 
@@ -88,6 +92,25 @@ function fillMail() {
         }
     }
 }
+
+const submitForm = async () => {
+    try {
+        await handleSubmit();
+        // Wenn die Validierung erfolgreich ist, führen Sie hier Ihre handleSubmit-Logik aus
+        // Beispiel: showToast('success', 'Message sent successfully!');
+        // Beispiel: clearFormFields()
+        setTimeout(() => {
+            showToast('success', 'Message sent successfully!');
+            clearFormFields(); // Felder leeren
+        }, 100); // Verzögerung hinzugefügt, um das Toast anzuzeigen;
+    } catch (error) {
+        // Fehler beim Validieren des Formulars
+        // showToast('error', 'Please correct the form errors.');
+        setTimeout(() => {
+            showToast('error', 'Message wasnt sent!');
+        }, 100); // Verzögerung hinzugefügt, um das Toast anzuzeigen;
+        }
+};
 
 </script>
 
@@ -140,14 +163,16 @@ function fillMail() {
                             <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Me</h2>
                                 <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Lets get in touch!</p>
-                                <form action="/api/message" class="space-y-8" method="post" id="contact" @submit="handleSubmit">
+                                <form action="/api/message" class="space-y-8" method="post" id="contact" @submit="submitForm">
                                     <div>
                                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                                        <input name="email" type="email"  id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
+                                        <input v-model="email" name="email" type="email"  id="email" :class="{'is-invalid': emailError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
+                                        <span v-if="emailError" class="text-red-500">{{ emailError }}</span>
                                     </div>
                                     <div class="sm:col-span-2">
                                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your message</label>
-                                        <textarea name="message" id="messageInput" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a message..."></textarea>
+                                        <textarea v-model="message" name="message" id="messageInput" rows="6" :class="{'is-invalid': messageError}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a message..."></textarea>
+                                        <span v-if="messageError" class="text-red-500">{{ messageError }}</span>
                                     </div>
                                     <button type="submit" class="py-3 px-5 text-sm font-medium text-center custom-button">Send message</button>
                                 </form>
