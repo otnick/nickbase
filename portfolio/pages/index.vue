@@ -51,13 +51,10 @@ const { handleSubmit } = useForm({
     validationSchema: schema,
 });
 
-const { value: email, errorMessage: emailError } = useField('email');
-const { value: message, errorMessage: messageError } = useField('message');
+const { value: email, errorMessage: emailError } = useField<string>('email');
+const { value: message, errorMessage: messageError } = useField<string>('message');
 
 function clearFormFields() {
-    const emailInput = document.getElementById('email') as HTMLInputElement | null;
-    const messageInput = document.getElementById('messageInput') as HTMLTextAreaElement | null;
-
     // Überprüfen, ob die Elemente existieren, bevor auf die 'value' Eigenschaft zugegriffen wird
     if (email) {
         email.value = '';
