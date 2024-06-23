@@ -90,24 +90,19 @@ function fillMail() {
     }
 }
 
-const submitForm = async () => {
-    try {
-        await handleSubmit();
-        // Wenn die Validierung erfolgreich ist, führen Sie hier Ihre handleSubmit-Logik aus
-        // Beispiel: showToast('success', 'Message sent successfully!');
-        // Beispiel: clearFormFields()
-        setTimeout(() => {
-            showToast('success', 'Message sent successfully!');
-            clearFormFields(); // Felder leeren
-        }, 100); // Verzögerung hinzugefügt, um das Toast anzuzeigen;
-    } catch (error) {
-        // Fehler beim Validieren des Formulars
-        // showToast('error', 'Please correct the form errors.');
-        setTimeout(() => {
-            showToast('error', 'Message wasnt sent!');
-        }, 100); // Verzögerung hinzugefügt, um das Toast anzuzeigen;
-        }
-};
+
+const submitForm = handleSubmit(
+    async (values) => {
+        // Hier können Sie die Logik für den erfolgreichen Formularversand hinzufügen
+        // z.B., Senden der Daten an einen Server
+        showToast('success', 'Message sent successfully!');
+        clearFormFields(); // Felder leeren
+    },
+    (errors) => {
+        // Fehlerhafte Validierung
+        showToast('error', 'Please correct the errors in the form!');
+    }
+);
 
 </script>
 
@@ -163,7 +158,7 @@ const submitForm = async () => {
                                 <form action="/api/message" class="space-y-8" method="post" id="contact" @submit="submitForm">
                                     <div>
                                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                                        <input v-model="email" name="email" type="email"  id="email" :class="{'is-invalid': emailError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
+                                        <input v-model="email" name="email"  id="email" :class="{'is-invalid': emailError}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@mail.com" required>
                                         <span v-if="emailError" class="text-red-500">{{ emailError }}</span>
                                     </div>
                                     <div class="sm:col-span-2">
