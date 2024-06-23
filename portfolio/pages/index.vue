@@ -83,10 +83,7 @@ const showToast = (type: 'success' | 'error', message: string) => {
 // Füllt das E-Mail-Feld mit der E-Mail-Adresse des Benutzers, wenn er über github angemeldet ist
 function fillMail() {
     if(status.value === 'authenticated') {
-        const emailInput = document.getElementById('email') as HTMLInputElement | null;
-        if (emailInput && data.value?.user?.email) {
-            emailInput.value = data.value?.user?.email;
-        }
+        email.value = data.value?.user?.email ?? '';
     }
 }
 
