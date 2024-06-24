@@ -1,76 +1,40 @@
-name: Deploy Nuxt site to Pages
-
-on:
+name: Build and Deploy
+on: 
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
+    branches:
+      - main
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
+  contents: write
 jobs:
-  build:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-      
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      
-      - name: Install pnpm (if used)
-        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
-        run: npm install -g pnpm
+    - name: Setup PNPM
+      uses: pnpm/action-setup@v2
+      with:
+        version: 7
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: nuxt
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
 
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .nuxt
-            node_modules
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+    - name: Install & Generate 🔧
+      run: |
+        pnpm install
+        pnpm generate
+      env:
+        NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL  }}
 
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-
-      - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dis
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: dist
