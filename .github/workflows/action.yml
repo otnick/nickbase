@@ -35,13 +35,11 @@ jobs:
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
+            echo "::set-output name=manager::pnpm"
+            echo "::set-output name=command::install"
           elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            exit 0
+            echo "::set-output name=manager::npm"  # Falls pnpm nicht erkannt wird, fallback zu npm
+            echo "::set-output name=command::ci"
           else
             echo "Unable to determine package manager"
             exit 1
@@ -65,7 +63,7 @@ jobs:
           path: |
             dist
             .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
