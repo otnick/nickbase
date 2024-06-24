@@ -25,6 +25,8 @@ export default defineNuxtConfig({
     provider: {
         type: 'authjs'
     },
+    isEnabled: true,
     origin: 'https://portfolio.nickot.is',
+    basePath: '/api/auth',
 },
 })
