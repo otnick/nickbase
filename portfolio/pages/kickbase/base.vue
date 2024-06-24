@@ -1,23 +1,45 @@
 <script setup lang="ts">
+import { useIsFormValid } from 'vee-validate';
 import { getLeagues, getFeed } from '../../server/api/kickbase';
 import { ref } from 'vue';
 
 const colorMode = useColorMode();
+const router = useRouter();
 
 const toastType = ref<'success' | 'error'>('success');
 const toastMessage = ref('');
 const toastVisible = ref(false);
 
-const userData = ref(localStorage.getItem('userSession') || '');
-const token = JSON.parse(userData.value).ctoken;
-const userID = JSON.parse(userData.value).userID;
-const leagueID = JSON.parse(userData.value).leagueID;
+let userData = ref('');
+let token = ref('');
+let userID = ref('');
+let leagueID = ref('');
+let userName = ref('');
+let cover = ref('');
 
-const loadBase = async () => {
-    console.log('Loading base...');
-    console.log('League ID: ' + leagueID);
-    console.log('User ID: ' + userID);
-    console.log('Token: ' + token);
+function fetchStorage() {
+    try{
+    userData = ref(localStorage.getItem('userSession') || '');
+    token = JSON.parse(userData.value).token;
+    userID = JSON.parse(userData.value).user.id;
+    leagueID = JSON.parse(userData.value).leagues[0].id;
+    userName = JSON.parse(userData.value).user.name;
+    cover = JSON.parse(userData.value).user.cover;
+
+    loadBase(userID, leagueID, token);
+    }
+    catch (error) {
+        toastType.value = 'error';
+        toastMessage.value = 'Base loading failed';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+        router.push('/kickbase/login');
+    }
+};
+
+const loadBase = async (userID: any, leagueID: any, token: any) => {
     try {
         await getLeagues(leagueID, token);
 
@@ -38,8 +60,7 @@ const loadBase = async () => {
     }
 };
 
-loadBase();
-
+fetchStorage();
 </script>
 
 <template>
@@ -49,7 +70,8 @@ loadBase();
         <div class="w-full h-full">
             <div class=" background">
                 <div class="mx-5 page-content custom-height mt-9">
-                    <h1 class="hover-text">Welcome to your base!</h1>
+                    <h1 class="hover-text">Welcome to your base {{ userName }}!</h1>
+                    <img :src="cover" alt="Cover" class="h-1/4 rounded-full"/>
                 </div>
             </div>
         </div>
