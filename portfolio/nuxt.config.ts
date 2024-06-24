@@ -13,8 +13,8 @@ export default defineNuxtConfig({
         {
           httpEquiv: 'Permissions-Policy', content: `
             attribution-reporting=(),
-            run-ad-auction=(),
-            join-ad-interest-group=(),
+            run-ad-auction=(self),
+            join-ad-interest-group=(self),
             compute-pressure=(),
             browsing-topics=()
           `
