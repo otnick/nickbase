@@ -49,6 +49,7 @@ export async function getLeagues(league_id: string, token: string) {
                 'Cookie': `kkstrauth=${token}`,
             },
         });
+        console.log("leagues", response);
     }
     catch (error) {
         console.error('Error:', error);
@@ -71,6 +72,7 @@ export async function getFeed(league_id: string, user_id: string, token: string)
                 'Cookie': `kkstrauth=${token}`,
             },
         });
+        console.log("feed", response);
     }
     catch (error) {
         console.error('Error:', error);
