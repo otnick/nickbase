@@ -10,12 +10,21 @@ const toastType = ref<'success' | 'error'>('success');
 const toastMessage = ref('');
 const toastVisible = ref(false);
 
+let userData = ref('');
+let token = ref('');
+let userID = ref('');
+let leagueID = ref('');
+let userName = ref('');
+let cover = ref('');
+
 function fetchStorage() {
     try{
-    const userData = ref(localStorage.getItem('userSession') || '');
-    const token = JSON.parse(userData.value).token;
-    const userID = JSON.parse(userData.value).user.id;
-    const leagueID = JSON.parse(userData.value).leagues[0].id;
+    userData = ref(localStorage.getItem('userSession') || '');
+    token = JSON.parse(userData.value).token;
+    userID = JSON.parse(userData.value).user.id;
+    leagueID = JSON.parse(userData.value).leagues[0].id;
+    userName = JSON.parse(userData.value).user.name;
+    cover = JSON.parse(userData.value).user.cover;
 
     loadBase(userID, leagueID, token);
     }
@@ -61,7 +70,8 @@ fetchStorage();
         <div class="w-full h-full">
             <div class=" background">
                 <div class="mx-5 page-content custom-height mt-9">
-                    <h1 class="hover-text">Welcome to your base!</h1>
+                    <h1 class="hover-text">Welcome to your base {{ userName }}!</h1>
+                    <img :src="cover" alt="Cover" class="h-1/4 rounded-full"/>
                 </div>
             </div>
         </div>
