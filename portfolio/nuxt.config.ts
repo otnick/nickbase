@@ -10,15 +10,6 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: 'Portfolio of Nick Schumacher' },
-        {
-          httpEquiv: 'Permissions-Policy', content: `
-            attribution-reporting=(),
-            run-ad-auction=(self),
-            join-ad-interest-group=(self),
-            compute-pressure=(),
-            browsing-topics=()
-          `
-        },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/unit_red.png' }
