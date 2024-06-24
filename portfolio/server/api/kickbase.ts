@@ -40,13 +40,14 @@ export async function login(email: string, password: string) {
 // Cookie: kkstrauth=[token];
 
 export async function getLeagues(league_id: string, token: string) {
+    const auth = 'Bearer ' + token;
     try {
         const response = await fetch(`https://api.kickbase.com/leagues/${league_id}/me`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Cookie': `kkstrauth=${token}`,
+                'Authorization': auth,
             },
         });
         console.log("leagues", response);
@@ -63,13 +64,14 @@ export async function getLeagues(league_id: string, token: string) {
 // Cookie: kkstrauth=[token];
 
 export async function getFeed(league_id: string, user_id: string, token: string) {
+    const auth = 'Bearer ' + token;
     try {
         const response = await fetch(`https://api.kickbase.com/leagues/${league_id}/users/${user_id}/feed`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Cookie': `kkstrauth=${token}`,
+                'Authorization': auth,
             },
         });
         console.log("feed", response);
