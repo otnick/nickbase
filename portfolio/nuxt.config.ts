@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   auth: {
     provider: {
         type: 'authjs'
-    }
+    },
+    origin: 'https://portfolio.nickot.is',
 },
 })
