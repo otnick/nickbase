@@ -1,23 +1,36 @@
 <script setup lang="ts">
+import { useIsFormValid } from 'vee-validate';
 import { getLeagues, getFeed } from '../../server/api/kickbase';
 import { ref } from 'vue';
 
 const colorMode = useColorMode();
+const router = useRouter();
 
 const toastType = ref<'success' | 'error'>('success');
 const toastMessage = ref('');
 const toastVisible = ref(false);
 
-const userData = ref(localStorage.getItem('userSession') || '');
-const token = JSON.parse(userData.value).ctoken;
-const userID = JSON.parse(userData.value).userID;
-const leagueID = JSON.parse(userData.value).leagueID;
+function fetchStorage() {
+    try{
+    const userData = ref(localStorage.getItem('userSession') || '');
+    const token = JSON.parse(userData.value).token;
+    const userID = JSON.parse(userData.value).user.id;
+    const leagueID = JSON.parse(userData.value).leagues[0].id;
 
-const loadBase = async () => {
-    console.log('Loading base...');
-    console.log('League ID: ' + leagueID);
-    console.log('User ID: ' + userID);
-    console.log('Token: ' + token);
+    loadBase(userID, leagueID, token);
+    }
+    catch (error) {
+        toastType.value = 'error';
+        toastMessage.value = 'Base loading failed';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+        router.push('/kickbase/login');
+    }
+};
+
+const loadBase = async (userID: any, leagueID: any, token: any) => {
     try {
         await getLeagues(leagueID, token);
 
@@ -38,8 +51,7 @@ const loadBase = async () => {
     }
 };
 
-loadBase();
-
+fetchStorage();
 </script>
 
 <template>
