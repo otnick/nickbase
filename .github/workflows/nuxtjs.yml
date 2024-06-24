@@ -1,17 +1,22 @@
 name: Build and Deploy
+
 on: 
   push:
     branches:
       - main
+
 permissions:
   contents: write
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [18]
+
     steps:
     - name: Checkout 🛎️
       uses: actions/checkout@v3
@@ -32,9 +37,10 @@ jobs:
         pnpm install
         pnpm generate
       env:
-        NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL  }}
+        NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL }}
+      working-directory: ./portfolio  # Stelle sicher, dass hier der richtige Pfad zu deinem Projektverzeichnis steht
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: dist
+        folder: ./portfolio/dist  # Hier ebenfalls sicherstellen, dass der Pfad zur generierten Ausgabe passt
