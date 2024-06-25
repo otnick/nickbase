@@ -12,6 +12,7 @@ export async function login(email: string, password: string) {
                 password: password,
                 ext: false,
             }),
+            credentials: 'include',
         });
         console.log("login", response);
         if (!response.ok) {
