@@ -1,3 +1,5 @@
+import { json } from "drizzle-orm/mysql-core";
+
 export async function login(mail: string, pw: string) {
     console.log('Logging in with email:', mail, 'and password:', pw);
     try {
@@ -12,7 +14,8 @@ export async function login(mail: string, pw: string) {
                 password: pw,
             }),
         });
-
+        const responseData = await response.json();
+        sessionStorage.setItem('userSession', JSON.stringify(responseData));
         console.log('Raw response:', response);
 
         if (response.ok) {
@@ -21,7 +24,6 @@ export async function login(mail: string, pw: string) {
             if (text) {
                 const data = JSON.parse(text);
                 console.log('Success:', data);
-                localStorage.setItem('userSession', data);
                 return data;
             } else {
                 console.warn('Empty response body received');
