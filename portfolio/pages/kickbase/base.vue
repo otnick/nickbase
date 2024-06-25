@@ -69,9 +69,15 @@ fetchStorage();
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
-                <div class="mx-5 page-content custom-height mt-9">
-                    <h1 class="hover-text">Welcome to your base {{ userName }}!</h1>
-                    <img :src="cover" alt="Cover" class="h-1/4 rounded-full"/>
+                <div class="mx-5 page-content custom-height mt-9 soccer-field">
+                    <h1 class="hover-text absolute top-48 h-z">Welcome to your base {{ userName }}!</h1>
+                    <div class="center-circle">
+                        <img :src="cover" alt="Profile picture" class="h-1/4 rounded-full">
+                    </div>  
+                    <div class="line vertical"></div>
+                    <!-- penalty box -->
+                    <div class="box left"></div>
+                    <div class="box right"></div>
                 </div>
             </div>
         </div>
@@ -152,4 +158,57 @@ fetchStorage();
     color: rgb(104, 231, 0);
 }
 
+.soccer-field {
+        position: relative;
+        background-color: #4CAF50; /* Green field color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .center-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10%; /* Adjust the circle size as needed */
+        max-width: 150px; /* Max width of the circle */
+        border-radius: 50%;
+        background-color: rgb(232, 243, 241);
+        border: 2px solid black;
+        z-index: 1;
+    }
+    .line {
+        position: absolute;
+        background-color: rgb(232, 243, 241);
+    }
+    .line.horizontal {
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .line.vertical {
+        width: 2px;
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .box {
+        position: absolute;
+        width: 10%;
+        height: 40%;
+        border: 2px solid rgb(232, 243, 241);
+    }
+    .box.left {
+        top: 50%;
+        left: 0%;
+        transform: translateY(-50%);
+        border-left: 0cm;
+    }
+    .box.right {
+        top: 50%;
+        right: 0%;
+        transform: translateY(-50%);
+        border-right: 0cm;
+    }
 </style>
