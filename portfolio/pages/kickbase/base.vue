@@ -158,13 +158,6 @@ fetchStorage();
     color: rgb(104, 231, 0);
 }
 
-.soccer-field {
-        position: relative;
-        background-color: #4CAF50; /* Green field color */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     .center-circle {
         position: absolute;
         top: 50%;
