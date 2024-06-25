@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { login } from '../../server/api/kickbase';
-import { ref } from 'vue';
 
 const router = useRouter();
 const colorMode = useColorMode();
@@ -26,7 +25,7 @@ const handleLogin = async (email: string, password: string) => {
         email = '';
         password = '';
 
-        // router.push('/kickbase/base');
+        router.push('/kickbase/base');
 
     } catch (error) {
         toastType.value = 'error';
@@ -47,7 +46,7 @@ const handleLogin = async (email: string, password: string) => {
             <div class=" background">
                 <div class="mx-5 page-content custom-height mt-9">
                     <h1 class="hover-text">Login to Kickbase</h1>
-                    <form @submit="handleLogin(email, password)">
+                    <form @submit.prevent="handleLogin(email, password)">
                     <input id="mail" type="text" v-model="email" placeholder="Email" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 mb-5"/>
                     <input id="password" type="password" v-model="password" placeholder="Password" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"/>
                     <button type="submit" class="px-5 text-sm font-medium text-center custom-button">Login</button>
