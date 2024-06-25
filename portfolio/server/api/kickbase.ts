@@ -13,15 +13,22 @@ export async function login(email: string, password: string) {
                 password: password,
             }),
         });
-        const data = await response.json();
-        console.log('Success:', data);
-        return data;
 
+        // Überprüfen, ob die Antwort erfolgreich ist und JSON erwartet wird
+        if (response.ok && response.headers.get('Content-Type')?.includes('application/json')) {
+            const data = await response.json();
+            console.log('Success:', data);
+            return data;
+        } else {
+            const errorText = await response.text();
+            console.error('Error: Non-JSON response received:', errorText);
+            throw new Error('Non-JSON response received');
+        }
     } catch (error) {
-        // Behandlung von Netzwerkfehlern und anderen Problemen
         console.error('Error during login:', error);
+        throw error; // Weiterwerfen des Fehlers für die Fehlerbehandlung im Aufrufer
     }
-}
+};
 
 // GET /leagues/[league_id]/me HTTP/1.1
 // Host: api.kickbase.com

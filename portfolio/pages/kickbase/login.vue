@@ -13,8 +13,6 @@ const password = ref('');
 
 const handleLogin = async (mail: string, pw: string) => {
     console.log("Loging in..");
-    console.log("mail: " + mail);
-    console.log("pw: " + pw);
     try {
         await login(mail, pw);
         toastType.value = 'success';
