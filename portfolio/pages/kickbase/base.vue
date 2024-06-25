@@ -72,7 +72,7 @@ fetchStorage();
                 <div class="mx-5 page-content custom-height mt-9">
                     <h1 class="hover-text absolute top-48 h-z">Welcome to your base {{ userName }}!</h1>
                     <div class="center-circle">
-                        <img :src="cover" alt="Profile picture" class="h-1/4 rounded-full">
+                        <img :src="cover" alt="Profile picture" class="h-1/2 rounded-full">
                     </div>  
                     <div class="line vertical"></div>
                     <!-- penalty box -->
@@ -153,6 +153,8 @@ fetchStorage();
     font-weight: bold;
     text-align: center;
     transition: color 0.5s;
+    z-index: 1;
+    background-color: rgb(22, 22, 22, 0.2);
 }
 .hover-text:hover {
     color: rgb(104, 231, 0);
