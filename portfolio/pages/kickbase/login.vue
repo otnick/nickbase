@@ -26,7 +26,7 @@ const handleLogin = async (email: string, password: string) => {
         email = '';
         password = '';
 
-        router.push('/kickbase/base');
+        // router.push('/kickbase/base');
 
     } catch (error) {
         toastType.value = 'error';
