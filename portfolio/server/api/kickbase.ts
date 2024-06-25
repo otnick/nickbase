@@ -21,7 +21,7 @@ export async function login(mail: string, pw: string) {
             if (text) {
                 const data = JSON.parse(text);
                 console.log('Success:', data);
-                sessionStorage.setItem('token', data.token);
+                sessionStorage.setItem('userSession', data);
                 return data;
             } else {
                 console.warn('Empty response body received');
