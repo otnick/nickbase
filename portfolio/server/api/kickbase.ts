@@ -1,4 +1,5 @@
 export async function login(email: string, password: string) {
+    console.log('Logging in with email:', email, 'and password:', password);
     try {
         const response = await fetch('https://api.kickbase.com/user/login', {
             method: 'POST',
