@@ -12,11 +12,19 @@ export async function login(email: string, password: string) {
             }),
         });
 
-        // Überprüfen, ob die Antwort erfolgreich ist und JSON erwartet wird
-        if (response.ok && response.headers.get('Content-Type')?.includes('application/json')) {
-            const data = await response.json();
-            console.log('Success:', data);
-            return data;
+        console.log('Raw response:', response);
+
+        if (response.ok) {
+            const text = await response.text();
+            console.log('Response text:', text);
+            if (text) {
+                const data = JSON.parse(text);
+                console.log('Success:', data);
+                return data;
+            } else {
+                console.warn('Empty response body received');
+                return {};
+            }
         } else {
             const errorText = await response.text();
             console.error('Error: Non-JSON response received:', errorText);
@@ -24,7 +32,7 @@ export async function login(email: string, password: string) {
         }
     } catch (error) {
         console.error('Error during login:', error);
-        throw error; // Weiterwerfen des Fehlers für die Fehlerbehandlung im Aufrufer
+        throw error;
     }
 };
 
