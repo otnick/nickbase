@@ -1,28 +1,40 @@
 import axios from 'axios'
 
-export async function login(email: string, password: string) {
-    try {
-        const response = await axios.post('https://api.kickbase.com/user/login', {
-            email: email,
-            password: password,
-            ext: true // Nach den Anforderungen des API-Endpunkts
-        });
-
-        if (response.status === 200) {
-            // Daten erfolgreich empfangen
-            console.log("Login successful:", response.data);
-            localStorage.setItem('userSession', JSON.stringify(response.data));
-            return response.data;
-        } else {
-            // Behandlung von Nicht-200 Antworten
-            console.error("Error:", response.status, response.statusText);
-            throw new Error(`HTTP error! Status: ${response.status}`);
+export async function login() {
+    axios({
+        url: 'https://api.kickbase.com/user/login',
+        method: 'POST',
+        data: {
+            email: localStorage.getItem('user'),
+            password: localStorage.getItem('password'),
+            ext: true,
         }
-
-    } catch (error) {
-        // Behandlung von Netzwerkfehlern und anderen Problemen
-        console.error('Error during login:', error);
-    }
+    })
+    .then(async (response) => {
+        if (response.status === 200 && response.data.token && response.data.tokenExp) {
+            // localStorage.setItem(Constants.LOCALSTORAGE.BEARER_TOKEN, response.data.token);
+            // localStorage.setItem(Constants.LOCALSTORAGE.BEARER_TOKEN_EXPIRATION, response.data.tokenExp);
+            // store.commit('setLoading', true);
+            // // Beispiel für eine weitere Aktion nach erfolgreicher Anmeldung
+            // await this.loadClubs(); // Beispielhafte Nachladeaktion
+            // window.location.reload();
+        } else {
+            // store.commit('setErrorMessage', 'Could not find valid token data');
+        }
+    })
+    .catch((error) => {
+        // if (error.response) {
+        //     if (error.response.status === 401) {
+        //         store.commit('setErrorMessage', 'Unauthorized: Invalid credentials');
+        //     } else {
+        //         store.commit('setErrorMessage', `Error: ${error.response.status}`);
+        //     }
+        // } else if (error.request) {
+        //     store.commit('setErrorMessage', 'Network error: Could not reach the server');
+        // } else {
+        //     store.commit('setErrorMessage', 'Login issues: Please try again later');
+        // }
+    });
 }
 
 // GET /leagues/[league_id]/me HTTP/1.1
