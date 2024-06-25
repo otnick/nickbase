@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export async function login(email: string, password: string) {
     try {
         const response = await fetch('https://api.kickbase.com/user/login', {
