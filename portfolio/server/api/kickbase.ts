@@ -6,8 +6,6 @@ export async function login(email: string, password: string) {
             email: email,
             password: password,
             ext: true // Nach den Anforderungen des API-Endpunkts
-        }, {
-            withCredentials: true // Erlaubt das Senden und Empfangen von Cookies
         });
 
         if (response.status === 200) {
