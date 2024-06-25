@@ -1,37 +1,31 @@
+import axios from 'axios'
 
 export async function login(email: string, password: string) {
     try {
-        const response = await fetch('https://api.kickbase.com/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                ext: false,
-            }),
+        const response = await axios.post('https://api.kickbase.com/user/login', {
+            email: email,
+            password: password,
+            ext: true // Nach den Anforderungen des API-Endpunkts
+        }, {
+            withCredentials: true // Erlaubt das Senden und Empfangen von Cookies
         });
-        console.log("login", response);
-        if (!response.ok) {
+
+        if (response.status === 200) {
+            // Daten erfolgreich empfangen
+            console.log("Login successful:", response.data);
+            localStorage.setItem('userSession', JSON.stringify(response.data));
+            return response.data;
+        } else {
+            // Behandlung von Nicht-200 Antworten
+            console.error("Error:", response.status, response.statusText);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // Parse the response as JSON
-        const responseData = await response.json();
-
-        // Assuming the response data contains some session-relevant information
-        // Store the response data in sessionStorage
-        localStorage.setItem('userSession', JSON.stringify(responseData));
-
-        return responseData;
-
+    } catch (error) {
+        // Behandlung von Netzwerkfehlern und anderen Problemen
+        console.error('Error during login:', error);
     }
-    catch (error) {
-        console.error('Error: Couldnt log in.', error);
-    }
-};
+}
 
 // GET /leagues/[league_id]/me HTTP/1.1
 // Host: api.kickbase.com
