@@ -35,7 +35,7 @@ function fetchStorage() {
         setTimeout(() => {
             toastVisible.value = false;
         }, 3000);
-        router.push('/kickbase/login');
+        // router.push('/kickbase/login');
     }
 };
 
