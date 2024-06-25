@@ -3,8 +3,8 @@ import axios from 'axios'
 export async function login(email: string, password: string) {
     try {
         const response = await axios.post('https://api.kickbase.com/user/login', {
-            email: 'nickschumacher10@googlemail.com',
-            password: 'farbkreis',
+            email: email,
+            password: password,
             ext: false // Nach den Anforderungen des API-Endpunkts
         }, {
             withCredentials: true // Erlaubt das Senden und Empfangen von Cookies

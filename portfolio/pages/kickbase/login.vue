@@ -11,10 +11,12 @@ const toastVisible = ref(false);
 const email = ref('');
 const password = ref('');
 
-const handleLogin = async (email: string, password: string) => {
+const handleLogin = async (mail: string, pw: string) => {
     console.log("Loging in..");
+    console.log("mail: " + mail);
+    console.log("pw: " + pw);
     try {
-        await login(email, password);
+        await login(mail, pw);
         toastType.value = 'success';
         toastMessage.value = 'Login successful';
         toastVisible.value = true;
@@ -22,8 +24,8 @@ const handleLogin = async (email: string, password: string) => {
         toastVisible.value = false;
         }, 3000);
 
-        email = '';
-        password = '';
+        email.value = '';
+        password.value = '';
 
         router.push('/kickbase/base');
 
