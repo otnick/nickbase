@@ -69,7 +69,7 @@ fetchStorage();
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
-                <div class="mx-5 page-content custom-height mt-9 soccer-field">
+                <div class="mx-5 page-content custom-height mt-9">
                     <h1 class="hover-text absolute top-48 h-z">Welcome to your base {{ userName }}!</h1>
                     <div class="center-circle">
                         <img :src="cover" alt="Profile picture" class="h-1/4 rounded-full">
@@ -157,7 +157,7 @@ fetchStorage();
 .hover-text:hover {
     color: rgb(104, 231, 0);
 }
-
+    
     .center-circle {
         position: absolute;
         top: 50%;

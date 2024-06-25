@@ -2,24 +2,19 @@ import axios from 'axios'
 
 export async function login(email: string, password: string) {
     try {
-        const response = await axios.post('https://api.kickbase.com/user/login', {
-            email: email,
-            password: password,
-            ext: false // Nach den Anforderungen des API-Endpunkts
-        }, {
-            withCredentials: true // Erlaubt das Senden und Empfangen von Cookies
+        const response = await fetch('https://api.kickbase.com/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
         });
-
-        if (response.status === 200) {
-            // Daten erfolgreich empfangen
-            console.log("Login successful:", response.data);
-            localStorage.setItem('userSession', JSON.stringify(response.data));
-            return response.data;
-        } else {
-            // Behandlung von Nicht-200 Antworten
-            console.error("Error:", response.status, response.statusText);
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        const data = await response.json();
+        console.log('Success:', data);
+        return data;
 
     } catch (error) {
         // Behandlung von Netzwerkfehlern und anderen Problemen
