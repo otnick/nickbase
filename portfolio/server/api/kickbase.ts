@@ -1,5 +1,5 @@
-export async function login(email: string, password: string) {
-    console.log('Logging in with email:', email, 'and password:', password);
+export async function login(mail: string, pw: string) {
+    console.log('Logging in with email:', mail, 'and password:', pw);
     try {
         const response = await fetch('https://api.kickbase.com/user/login', {
             method: 'POST',
@@ -8,8 +8,8 @@ export async function login(email: string, password: string) {
                 'Accept': 'application/json',
             },
             body: JSON.stringify({
-                email: 'nickschumacher10@googlemail.com',
-                password: 'farbkreis',
+                email: mail,
+                password: pw,
             }),
         });
 
