@@ -13,7 +13,7 @@ export async function login(email: string, password: string) {
                 ext: false,
             }),
         });
-
+        console.log("login", response);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
