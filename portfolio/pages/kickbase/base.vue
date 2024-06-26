@@ -34,8 +34,9 @@ function fetchStorage() {
         toastVisible.value = true;
         setTimeout(() => {
             toastVisible.value = false;
+            router.push('/kickbase/login');
         }, 3000);
-        // router.push('/kickbase/login');
+        
     }
 };
 
@@ -60,6 +61,11 @@ const loadBase = async (userID: any, leagueID: any, token: any) => {
     }
 };
 
+const handleLogout = () => {
+    localStorage.removeItem('userSession');
+    router.push('/kickbase/login');
+};
+
 fetchStorage();
 </script>
 
@@ -69,6 +75,7 @@ fetchStorage();
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
+                <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button">Logout</button>
                 <div class="mx-5 page-content custom-height mt-9">
                     <h1 class="hover-text absolute top-48 h-z">Welcome to your base {{ userName }}!</h1>
                     <div class="center-circle">

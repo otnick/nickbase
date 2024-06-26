@@ -31,6 +31,7 @@ export async function login(mail: string, pw: string) {
     }
 };
 
+
 // GET /leagues/[league_id]/me HTTP/1.1
 // Host: api.kickbase.com
 // Content-Type: application/json
