@@ -11,6 +11,7 @@ export async function login(mail: string, pw: string) {
             },
             body: JSON.stringify({
                 email: mail,
+                ext: true,
                 password: pw,
             }),
         });
