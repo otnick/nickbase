@@ -3,7 +3,7 @@ import { json } from "drizzle-orm/mysql-core";
 export async function login(mail: string, pw: string) {
     console.log('Logging in with email:', mail, 'and password:', pw);
     try {
-        const response = await fetch('https://api.kickbase.com/user/login', {
+        const response = await fetch('http://api.aiko.lol:25511/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
