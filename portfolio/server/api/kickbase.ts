@@ -14,26 +14,10 @@ export async function login(mail: string, pw: string) {
                 password: pw,
             }),
         });
-        const responseData = await response.json();
-        localStorage.setItem('userSession', JSON.stringify(responseData));
+        
         console.log('Raw response:', response);
+        return response;
 
-        // if (response.ok) {
-        //     const text = await response.text();
-        //     console.log('Response text:', text);
-        //     if (text) {
-        //         const data = JSON.parse(text);
-        //         console.log('Success:', data);
-        //         return data;
-        //     } else {
-        //         console.warn('Empty response body received');
-        //         return {};
-        //     }
-        // } else {
-        //     const errorText = await response.text();
-        //     console.error('Error: Non-JSON response received:', errorText);
-        //     throw new Error('Non-JSON response received');
-        // }
     } catch (error) {
         console.error('Error during login:', error);
         throw error;
