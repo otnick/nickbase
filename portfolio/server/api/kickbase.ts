@@ -16,6 +16,12 @@ export async function login(mail: string, pw: string) {
         });
         
         console.log('Raw response:', response);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Response not OK. Status:', response.status, 'Error:', errorData);
+            throw new Error('API request failed');
+        }
+
         return response;
 
     } catch (error) {
