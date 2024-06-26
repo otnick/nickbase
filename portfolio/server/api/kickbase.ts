@@ -10,10 +10,10 @@ export async function login(mail: string, pw: string) {
                 'Accept': 'application/json',
             },
             body: JSON.stringify({
-                email: mail,
-                password: pw,
-                ext: true,
-            }),
+                "email": mail,
+                "password": pw,
+                "ext": true
+              }),
         });
         
         console.log('Raw response:', response);
