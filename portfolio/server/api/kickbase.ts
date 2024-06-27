@@ -1,4 +1,3 @@
-import { json } from "drizzle-orm/mysql-core";
 
 export async function login(mail: string, pw: string) {
     console.log('Logging in with email:', mail, 'and password:', pw);

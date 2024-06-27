@@ -17,7 +17,7 @@ const handleLogin = async (mail: string, pw: string) => {
         let response = await login(mail, pw);
         const responseData = await response.json();
         localStorage.setItem('userSession', JSON.stringify(responseData));
-        
+
         toastType.value = 'success';
         toastMessage.value = 'Login successful';
         toastVisible.value = true;
