@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useIsFormValid } from 'vee-validate';
-import { getLeagues, getFeed } from '../../server/api/kickbase';
+import { getLeagues, getFeed, collectGift, getCurrentGift  } from '../../server/api/kickbase';
 import { ref } from 'vue';
 
 const colorMode = useColorMode();
@@ -16,6 +16,7 @@ let userID = ref('');
 let leagueID = ref('');
 let userName = ref('');
 let cover = ref('');
+let gift: any = ref('');
 
 function fetchStorage() {
     try{
@@ -27,6 +28,8 @@ function fetchStorage() {
     cover = JSON.parse(userData.value).user.cover;
 
     loadBase(userID, leagueID, token);
+    getCurrentGifts(leagueID, token);
+    collectGifts(leagueID, token);
     }
     catch (error) {
         toastType.value = 'error';
@@ -66,6 +69,56 @@ const handleLogout = () => {
     router.push('/kickbase/login');
 };
 
+const getCurrentGifts = async (leagueID: any, token: any) => {
+    try {
+        gift.value = await getCurrentGift(leagueID, token);
+        gift.value = await gift.value?.json();
+        console.log("Geschenk: " + gift);
+        toastType.value = 'success';
+        toastMessage.value = 'Gift loaded';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+    } catch (error) {
+        toastType.value = 'error';
+        toastMessage.value = 'Gift loading failed';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+    }
+};
+
+const collectGifts = async (leagueID: any, token: any) => {
+    try {
+        let collected = await collectGift(leagueID, token);
+        const collectedData = await collected?.json();
+
+        if(collectedData.errMsg === 'Gift already collected'){
+            toastType.value = 'error';
+            toastMessage.value = 'Gift already collected';
+            toastVisible.value = true;
+            setTimeout(() => {
+                toastVisible.value = false;
+            }, 3000);
+            return;
+        }
+        toastType.value = 'success';
+        toastMessage.value = 'Gift collected';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+    } catch (error) {
+        toastType.value = 'error';
+        toastMessage.value = 'Gift collection failed';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+        }, 3000);
+    }
+};
 fetchStorage();
 </script>
 
@@ -73,6 +126,7 @@ fetchStorage();
     <Topbar />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Logout</button>
+    <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Gift: {{ gift.amount }}</button>
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">

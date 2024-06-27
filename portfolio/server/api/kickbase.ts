@@ -78,3 +78,53 @@ export async function getFeed(league_id: string, user_id: string, token: string)
         console.error('Error:', error);
     }
 };
+
+// POST /leagues/[league_id]/collectgift HTTP/1.1
+// Host: api.kickbase.com
+// Content-Type: application/json
+// Accept: application/json
+// Cookie: kkstrauth=[token];
+
+export async function collectGift(league_id: string, token: string) {
+    const auth = 'Bearer ' + token;
+    try {
+        const response = await fetch(`https://api.kickbase.com/leagues/${league_id}/collectgift`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': auth,
+            },
+        });
+        console.log("gift", response);
+        return response;
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+// GET /leagues/[league_id]/currentgift HTTP/1.1
+// Host: api.kickbase.com
+// Content-Type: application/json
+// Accept: application/json
+// Cookie: kkstrauth=[token];
+
+export async function getCurrentGift(league_id: string, token: string) {
+    const auth = 'Bearer ' + token;
+    try {
+        const response = await fetch(`https://api.kickbase.com/leagues/${league_id}/currentgift`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': auth,
+            },
+        });
+        console.log("current gift", response);
+        return response;
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+};
