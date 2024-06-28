@@ -9,13 +9,13 @@ const colorMode = useColorMode();
         <div class="nav">
             <div class="nav__box">
                 <div class="nav__link-col">
-                    <NuxtLink to="/" class="nav__link">Transfers</NuxtLink>
+                    <NuxtLink to="/kickbase/transfer" class="nav__link">Transfers</NuxtLink>
                 </div>
                 <div class="nav__link-col">
                     <NuxtLink to="/" class="nav__link">Base</NuxtLink>
                 </div>
                 <div class="nav__link-col">
-                    <NuxtLink to="/" class="nav__link">Team</NuxtLink>
+                    <NuxtLink to="/kickbase/team" class="nav__link">Team</NuxtLink>
                 </div>
             </div>
         </div>
