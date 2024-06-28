@@ -1,4 +1,10 @@
 <script setup lang="ts">
+
+const props = defineProps<{
+  title: string;
+  image: any;
+}>();
+
 const colorMode = useColorMode();
 </script>
 
@@ -7,8 +13,10 @@ const colorMode = useColorMode();
     <div class="w-full h-full">
       <div class="background">
         <div class="mx-5 page-content custom-height mt-9">
-          <h1 class="hover-text absolute top-48 h-z">Transfer</h1>
-          <div class="center-circle"></div>  
+          <h1 class="hover-text absolute top-48 h-z">{{ props.title }}</h1>
+          <div class="center-circle">
+            <img :src="props.image" alt="Profile picture" class="rounded-full" v-if="props.image != null">
+          </div>  
           <div class="line vertical"></div>
           <!-- penalty box -->
           <div class="box left"></div>

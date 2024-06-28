@@ -7,8 +7,7 @@ const colorMode = useColorMode();
     <Topbar />
     <Logout/>
     <KickbaseNav class="fixed centered-component"/>
-    <KickbaseBackground>
-        
+    <KickbaseBackground title="Team" :image=null>
     </KickbaseBackground>
 </template>
 

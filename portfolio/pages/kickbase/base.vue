@@ -130,22 +130,16 @@ onMounted(() => {
     <KickbaseNav class="fixed centered-component"/>
     <Logout/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Gift: {{ gift.amount }}</button>
-    <div :class="colorMode.preference">
-        <div class="w-full h-full">
-            <div class=" background">
-                <div class="mx-5 page-content custom-height mt-9">
-                    <h1 class="hover-text absolute top-48 h-z">Welcome to your base {{ userName }}!</h1>
-                    <div class="center-circle">
-                        <img :src="cover" alt="Profile picture" class="rounded-full" v-if="cover">
-                    </div>  
-                    <div class="line vertical"></div>
-                    <!-- penalty box -->
-                    <div class="box left"></div>
-                    <div class="box right"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
+        <div class="center-circle">
+            <img :src="cover" alt="Profile picture" class="rounded-full" v-if="cover">
+        </div>  
+        <div class="line vertical"></div>
+        <!-- penalty box -->
+        <div class="box left"></div>
+        <div class="box right"></div>
+    </KickbaseBackground>
+    
 </template>
 
 <style scoped>
