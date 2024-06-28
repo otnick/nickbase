@@ -96,11 +96,18 @@ export async function collectGift(league_id: string, token: string) {
                 'Authorization': auth,
             },
         });
-        console.log("gift", response);
+        console.log('Raw response:', response);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Response not OK. Status:', response.status, 'Error:', errorData);
+            throw new Error('API request failed');
+        }
+
         return response;
-    }
-    catch (error) {
-        console.error('Error:', error);
+
+    } catch (error) {
+        console.error('Error during login:', error);
+        throw error;
     }
 };
 
@@ -121,10 +128,17 @@ export async function getCurrentGift(league_id: string, token: string) {
                 'Authorization': auth,
             },
         });
-        console.log("current gift", response);
+        console.log('Raw response:', response);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Response not OK. Status:', response.status, 'Error:', errorData);
+            throw new Error('API request failed');
+        }
+
         return response;
-    }
-    catch (error) {
-        console.error('Error:', error);
+
+    } catch (error) {
+        console.error('Error during login:', error);
+        throw error;
     }
 };
