@@ -127,6 +127,7 @@ onMounted(() => {
 <template>
     <Topbar />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
+    <KickbaseNav class="fixed centered-component"/>
     <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Logout</button>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Gift: {{ gift.amount }}</button>
     <div :class="colorMode.preference">
@@ -279,4 +280,10 @@ onMounted(() => {
         transform: translateY(-50%);
         border-right: 0cm;
     }
+    .centered-component {
+    top: 10%;  /* Position von oben 50% */
+    left: 50%; /* Position von links 50% */
+    transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
+    z-index: 1000; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
+}
 </style>
