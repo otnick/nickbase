@@ -119,7 +119,9 @@ const collectGifts = async (leagueID: any, token: any) => {
         }, 3000);
     }
 };
-fetchStorage();
+onMounted(() => {
+    fetchStorage();
+});
 </script>
 
 <template>
