@@ -128,7 +128,7 @@ onMounted(() => {
     <Topbar />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <KickbaseNav class="fixed centered-component"/>
-    <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Logout</button>
+    <Logout/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Gift: {{ gift.amount }}</button>
     <div :class="colorMode.preference">
         <div class="w-full h-full">
