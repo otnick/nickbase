@@ -120,6 +120,7 @@ const colorMode = useColorMode();
   border: 2px solid rgb(232, 243, 241);
 }
 
+
 .line {
   position: absolute;
   background-color: rgb(22, 22, 22);
@@ -177,10 +178,25 @@ const colorMode = useColorMode();
 
 /* Mobile view adjustments */
 @media (max-width: 768px) {
+
+  .dark .background {
+    background-color: rgb(232, 243, 241);
+  }
+
+  .light .background {
+    background-color: rgb(22, 22, 22);
+  }
+
   .page-content {
     flex-direction: column; /* Keep column layout */
     justify-content: flex-start; /* Align items at the top */
     height: 100%; /* Use full height */
+  }
+
+  .dark .page-content {
+    color: rgb(232, 243, 241);
+    border: 2px solid #ffffff;
+    background-color: rgb(22, 22, 22);  
   }
 
   .center-circle {
@@ -191,17 +207,20 @@ const colorMode = useColorMode();
     height: 5em; /* Adjust size for smaller screens */
   }
 
+  .dark .center-circle {
+    border: 2px solid rgb(232, 243, 241);
+  }
+
   .line.vertical {
     display: none; /* Hide vertical line on mobile */
   }
 
   .line.horizontal {
     display: block;
-    width: 2px; /* Change horizontal line to vertical */
+    width: 2px;
     height: calc(100vh - 36px);
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .box {
@@ -227,17 +246,11 @@ const colorMode = useColorMode();
   }
 
   .centered-component {
-    bottom: 5rem;
+    top: 95%; /* Position from top 50% */
     left: 50%; /* Position von links 50% */
     transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
     z-index: 1001; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
 }
 }
 
-.centered-component {
-    top: 10%;  /* Position von oben 50% */
-    left: 50%; /* Position von links 50% */
-    transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
-    z-index: 1000; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
-}
 </style>
