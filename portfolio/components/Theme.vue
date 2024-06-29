@@ -17,6 +17,7 @@ const colorMode = useColorMode();
         padding: 8px;
         margin-top: 20px;
         color: rgb(22, 22, 22);
+        z-index: 1000;
     }
 
     .custom-button:hover {

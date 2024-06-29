@@ -113,7 +113,6 @@ onMounted(() => {
 <template>
     <Topbar />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
-    <KickbaseNav class="fixed centered-component"/>
     <Logout/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Daily: {{ giftStatus }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">

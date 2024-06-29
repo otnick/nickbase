@@ -11,6 +11,7 @@ const colorMode = useColorMode();
 <template>
   <div :class="colorMode.preference">
     <Theme/>
+    <KickbaseNav class="fixed centered-component"/>
     <div class="w-full h-full">
       <div class="background">
         <div class="mx-5 page-content custom-height mt-9">
@@ -224,5 +225,19 @@ const colorMode = useColorMode();
     border-bottom: 0; /* Remove bottom border */
     border-right: 2px solid; /* Add right border */
   }
+
+  .centered-component {
+    bottom: 5rem;
+    left: 50%; /* Position von links 50% */
+    transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
+    z-index: 1001; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
+}
+}
+
+.centered-component {
+    top: 10%;  /* Position von oben 50% */
+    left: 50%; /* Position von links 50% */
+    transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
+    z-index: 1000; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
 }
 </style>
