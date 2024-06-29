@@ -16,6 +16,7 @@ let leagueID = ref('');
 let userName = ref('');
 let cover = ref('');
 let gift: any = ref('');
+let giftStatus = ref('');
 
 function fetchStorage() {
     try{
@@ -92,30 +93,16 @@ const getCurrentGifts = async (leagueID: any, token: any) => {
 const collectGifts = async (leagueID: any, token: any) => {
     try {
         let collected = await collectGift(leagueID, token);
-        const collectedData = await collected?.json();
-
-        if(collectedData.errMsg === 'Gift already collected'){
-            toastType.value = 'error';
-            toastMessage.value = 'Gift already collected';
-            toastVisible.value = true;
-            setTimeout(() => {
-                toastVisible.value = false;
-            }, 3000);
-            return;
-        }
+        console.log("Geschenk: " + collected);
+        giftStatus.value = 'Collected';
         toastType.value = 'success';
         toastMessage.value = 'Gift collected';
         toastVisible.value = true;
         setTimeout(() => {
             toastVisible.value = false;
         }, 3000);
-    } catch (error) {
-        toastType.value = 'error';
-        toastMessage.value = 'Gift collection failed';
-        toastVisible.value = true;
-        setTimeout(() => {
-            toastVisible.value = false;
-        }, 3000);
+    } catch (error: any) {
+        giftStatus.value = 'Collected';
     }
 };
 onMounted(() => {
@@ -128,7 +115,7 @@ onMounted(() => {
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <KickbaseNav class="fixed centered-component"/>
     <Logout/>
-    <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Gift: {{ gift.amount }}</button>
+    <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Daily: {{ giftStatus }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
         <div class="center-circle">
             <img :src="cover" alt="Profile picture" class="rounded-full" v-if="cover">

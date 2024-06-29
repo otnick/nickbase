@@ -111,12 +111,12 @@ const colorMode = useColorMode();
   width: 10em; /* Adjust the circle size as needed */
   height: 10em; /* Max width and height of the circle */
   border-radius: 50%;
-  border: 2px solid rgb(232, 243, 241);
+  border: 2px solid rgb(22, 22, 22);
   z-index: 1;
 }
 
 .dark .center-circle {
-  border: 2px solid rgb(22, 22, 22);
+  border: 2px solid rgb(232, 243, 241);
 }
 
 .line {
