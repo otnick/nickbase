@@ -3,7 +3,7 @@ const router = useRouter();
 
 const handleLogout = () => {
     localStorage.removeItem('userSession');
-    router.push('/kickbase/login');
+    router.push('/login');
 };
 </script>
 
