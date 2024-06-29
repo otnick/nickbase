@@ -39,6 +39,28 @@ const handleLogin = async (mail: string, pw: string) => {
         }, 3000);
     }
 };
+
+function fetchStorage() {
+    try{
+        let userData = ref(localStorage.getItem('userSession') || '');
+        if(userData.value !== '') {
+            router.push('/');
+        }
+    }
+    catch (error) {
+        toastType.value = 'error';
+        toastMessage.value = 'Base loading failed';
+        toastVisible.value = true;
+        setTimeout(() => {
+            toastVisible.value = false;
+            router.push('/login');
+        }, 1000);
+    }
+};
+
+onMounted(() => {
+    fetchStorage();
+});
 </script>
 
 <template>

@@ -38,7 +38,7 @@ function fetchStorage() {
         setTimeout(() => {
             toastVisible.value = false;
             router.push('/login');
-        }, 3000);
+        }, 1000);
         
     }
 };
