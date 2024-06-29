@@ -65,7 +65,7 @@ const loadBase = async (userID: any, leagueID: any, token: any) => {
 
 const handleLogout = () => {
     localStorage.removeItem('userSession');
-    router.push('/kickbase/login');
+    router.push('/login');
 };
 
 const getCurrentGifts = async (leagueID: any, token: any) => {
