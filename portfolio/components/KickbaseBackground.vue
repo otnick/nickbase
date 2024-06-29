@@ -10,6 +10,7 @@ const colorMode = useColorMode();
 
 <template>
   <div :class="colorMode.preference">
+    <Theme/>
     <div class="w-full h-full">
       <div class="background">
         <div class="mx-5 page-content custom-height mt-9">
