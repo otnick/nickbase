@@ -22,7 +22,7 @@
   
   <style scoped>
   .menu-box {
-    width: 90%;
+    width: 88%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +34,6 @@
     z-index: 1001;
     position: fixed;
     top: 2.3rem;
-    border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
     transition: all 0.3s ease-in-out;
   }

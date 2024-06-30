@@ -164,6 +164,7 @@ onMounted(() => {
         padding: 8px;
         margin-top: 20px;
         color: rgb(22, 22, 22);
+        z-index: 1;
     }
 
     .custom-button:hover {
