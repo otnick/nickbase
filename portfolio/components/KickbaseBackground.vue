@@ -20,6 +20,7 @@ const colorMode = useColorMode();
             <img :src="props.image" alt="Profile picture" class="rounded-full" v-if="props.image != null">
           </div>  
           <div class="line vertical"></div>
+          <div class="line horizontal"></div>
           <!-- penalty box -->
           <div class="box left"></div>
           <div class="box right"></div>
@@ -131,10 +132,7 @@ const colorMode = useColorMode();
 }
 
 .line.horizontal {
-  width: 100%;
-  height: 2px;
-  top: 50%;
-  transform: translateY(-50%);
+  display: none;
 }
 
 .line.vertical {
@@ -188,9 +186,12 @@ const colorMode = useColorMode();
   }
 
   .page-content {
-    flex-direction: column; /* Keep column layout */
-    justify-content: flex-start; /* Align items at the top */
-    height: 100%; /* Use full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 36px);
+    border-radius: 8px;
   }
 
   .dark .page-content {
@@ -212,15 +213,14 @@ const colorMode = useColorMode();
   }
 
   .line.vertical {
-    display: none; /* Hide vertical line on mobile */
+    display: none;
   }
 
   .line.horizontal {
-    display: block;
-    width: 2px;
-    height: calc(100vh - 36px);
-    top: 50%;
-    transform: translateY(-50%);
+    width: 100%; /* Adjust width */
+    height: 2px; 
+    top: 50%; 
+    color: red;
   }
 
   .box {
@@ -250,6 +250,15 @@ const colorMode = useColorMode();
     left: 50%; /* Position von links 50% */
     transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
     z-index: 1001; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
+}
+
+.hover-text {
+  display: none; /* Hide hover text on mobile */
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.5s;
+  font-size: 2.5em; /* Increase font size */
+  z-index: 1;
 }
 }
 
