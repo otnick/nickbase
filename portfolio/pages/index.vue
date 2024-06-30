@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getLeagues, getFeed, collectGift, getCurrentGift  } from '../server/api/kickbase';
 import { ref } from 'vue';
+import Toast from '../components/Toast.vue';
 
 const colorMode = useColorMode();
 const router = useRouter();

@@ -65,7 +65,7 @@ onMounted(() => {
 
 <template>
     <Topbar />
-    <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
+    <!-- <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/> -->
     <div :class="colorMode.preference">
         <div class="w-full h-full">
             <div class=" background">
