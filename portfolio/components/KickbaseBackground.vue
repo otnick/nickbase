@@ -10,7 +10,7 @@ const colorMode = useColorMode();
 
 <template>
   <div :class="colorMode.preference">
-    <Theme/>
+    <Utility/>
     <KickbaseNav class="fixed centered-component"/>
     <div class="w-full h-full">
       <div class="background">
@@ -229,7 +229,7 @@ const colorMode = useColorMode();
   }
 
   .box.left {
-    top: 0; /* Position at the top */
+    top: 36px; /* Position at the top */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     border-top: 0; /* Remove top border */
@@ -249,7 +249,7 @@ const colorMode = useColorMode();
     top: 95%; /* Position from top 50% */
     left: 50%; /* Position von links 50% */
     transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
-    z-index: 1001; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
+    z-index: 1000; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
 }
 
 .hover-text {

@@ -8,7 +8,7 @@ const handleLogout = () => {
 </script>
 
 <template>
-    <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Logout</button>
+    <button @click="handleLogout()" class="px-5 text-sm font-medium text-center custom-button">Logout</button>
 </template>
 
 <style scoped>

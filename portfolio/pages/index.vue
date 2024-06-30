@@ -18,7 +18,7 @@ let cover = ref('');
 let gift: any = ref('');
 let giftStatus = ref('');
 
-function fetchStorage() {
+function fetchStorage() {   
     try{
     userData = ref(localStorage.getItem('userSession') || '');
     token = JSON.parse(userData.value).token;
@@ -113,8 +113,7 @@ onMounted(() => {
 <template>
     <Topbar />
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
-    <Logout/>
-    <button class="px-5 text-sm font-medium text-center custom-button fixed top-20 left-10">Daily: {{ giftStatus }}</button>
+    <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Daily: {{ giftStatus }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
         <div class="center-circle">
             <img :src="cover" alt="Profile picture" class="rounded-full" v-if="cover">

@@ -4,7 +4,7 @@ const colorMode = useColorMode();
 </script>
 
 <template>
-    <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="px-5 text-sm font-medium text-center custom-button fixed top-10 right-10">
+    <button @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'" class="px-5 text-sm font-medium text-center custom-button">
         Toggle Theme
     </button>
 </template>

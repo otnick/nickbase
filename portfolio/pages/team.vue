@@ -5,7 +5,7 @@ const colorMode = useColorMode();
 
 <template>
     <Topbar />
-    <Logout/>
+    <Utility/>
     <KickbaseBackground title="Team" :image=null>
     </KickbaseBackground>
 </template>

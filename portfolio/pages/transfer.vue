@@ -5,9 +5,8 @@ const colorMode = useColorMode();
 
 <template>
     <Topbar />
-    <Logout/>
+    <Utility />
     <KickbaseBackground title="Transfer" :image=null>
-        
     </KickbaseBackground>
 </template>
 
