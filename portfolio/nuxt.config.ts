@@ -17,8 +17,13 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxt/content', "@nuxt/icon"],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@nuxt/content',
+    "@nuxt/icon",
+  ],
   colorMode: { classSuffix: '' },
-  css: ['@/assets/css/tailwind.css'], 
+  css: ['@/assets/css/tailwind.css'],
   tailwindcss: { configPath: 'tailwind.config.js',},
 })

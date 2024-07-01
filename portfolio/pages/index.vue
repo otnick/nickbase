@@ -113,10 +113,10 @@ onMounted(() => {
 
 <template>
     <Topbar />
+    <LeagueModal class=""/>
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Daily: {{ giftStatus }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
-        <LeagueModal></LeagueModal>
     </KickbaseBackground>
     
 </template>
