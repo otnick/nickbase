@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {login} from '../server/api/kickbase';
 
 const router = useRouter();
 const colorMode = useColorMode();
