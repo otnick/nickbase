@@ -48,7 +48,6 @@ export async function getLeagues(league_id: string, token: string) {
                 'Authorization': auth,
             },
         });
-        console.log("leagues", response);
     }
     catch (error) {
         console.error('Error:', error);
