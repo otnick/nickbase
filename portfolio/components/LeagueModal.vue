@@ -65,12 +65,12 @@ function saveLeague() {
                                 <div class="flex justify-between mt-2">
                                     <!-- Budget Section -->
                                     <div class="flex flex-col items-center me-5">
-                                        <div class="w-full text-green-500 dark:text-gray-400 font-bold">{{ league.lm.budget }}€</div>
+                                        <div class="w-full text-green-500 font-bold">{{ league.lm.budget }}€</div>
                                         <div class="w-full text-black-500 dark:text-gray-400 text-center">Balance</div>
                                     </div>
                                     <!-- Team Value Section -->
                                     <div class="flex flex-col items-center">
-                                        <div class="w-full text-green-500 dark:text-gray-400 font-bold">{{ league.lm.teamValue }}€</div>
+                                        <div class="w-full text-green-500 font-bold">{{ league.lm.teamValue }}€</div>
                                         <div class="w-full text-black-500 dark:text-gray-400 text-center">Teamvalue</div>
                                     </div>
                                 </div>
