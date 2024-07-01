@@ -116,13 +116,7 @@ onMounted(() => {
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Daily: {{ giftStatus }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
-        <div class="center-circle">
-            <img :src="cover" alt="Profile picture" class="rounded-full" v-if="cover">
-        </div>  
-        <div class="line vertical"></div>
-        <!-- penalty box -->
-        <div class="box left"></div>
-        <div class="box right"></div>
+        <LeagueModal></LeagueModal>
     </KickbaseBackground>
     
 </template>
