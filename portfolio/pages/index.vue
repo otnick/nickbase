@@ -113,7 +113,6 @@ onMounted(() => {
 
 <template>
     <Topbar />
-    <LeagueModal/>
     <LeagueDetails/>
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
     <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">{{ giftStatus? giftStatus : "" }}</button>

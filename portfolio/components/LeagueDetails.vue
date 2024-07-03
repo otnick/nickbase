@@ -23,6 +23,7 @@ function formatBudget(amount: number): string {
 </script>
 
 <template>
+    <LeagueModal/>
     <div class="nav">
         <div class="nav__box">
             <h1 class="nav__link-col mb-0"> {{ selectedLeague.name }} </h1>
