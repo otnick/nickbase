@@ -113,9 +113,10 @@ onMounted(() => {
 
 <template>
     <Topbar />
-    <LeagueModal class=""/>
+    <LeagueModal/>
+    <LeagueDetails/>
     <Toast :type="toastType" :message="toastMessage" :visible="toastVisible" class="me-5"/>
-    <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">Daily: {{ giftStatus }}</button>
+    <button class="px-5 text-sm font-medium text-center custom-button fixed top-10 left-10">{{ giftStatus? giftStatus : "" }}</button>
     <KickbaseBackground :title="`Welcome to your base ${userName}!`" :image="cover">
     </KickbaseBackground>
     
@@ -255,7 +256,7 @@ onMounted(() => {
         border-right: 0cm;
     }
     .centered-component {
-    top: 10%;  /* Position von oben 50% */
+    bottom: 10%;  /* Position von oben 50% */
     left: 50%; /* Position von links 50% */
     transform: translate(-50%, -50%); /* Verschiebt die Komponente um die Hälfte ihrer eigenen Breite und Höhe */
     z-index: 1000; /* Stellt sicher, dass die Komponente über anderen Elementen liegt */
