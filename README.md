@@ -9,5 +9,6 @@ pnpm run dev
 https://kevinskyba.github.io/kickbase-api-doc/index.html#folder-gift
 
 ### try out
-* no data will be saved, use at own risk *
-nickbase.nickot.is
+no data will be saved, use at own risk*
+[nickbase](nickbase.nickot.is)
+
