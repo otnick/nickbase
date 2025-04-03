@@ -17,7 +17,7 @@ const colorMode = useColorMode();
         <div class="mx-5 page-content custom-height mt-9">
           <h1 class="hover-text absolute top-48 h-z">{{ props.title }}</h1>
           <div class="center-circle">
-            <img :src="props.image" alt="Profile picture" class="rounded-full" v-if="props.image != null">
+            <img :src="props.image" alt="Profile picture" class="rounded-full h-40" v-if="props.image != null">
           </div>  
           <div class="line vertical"></div>
           <div class="line horizontal"></div>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// import { getLeagues, getFeed, collectGift, getCurrentGift  } from '../server/api/kickbase';
-import { ref } from 'vue';
 import Toast from '../components/Toast.vue';
 
 const colorMode = useColorMode();
@@ -22,17 +20,19 @@ let giftStatus = ref('');
 function fetchStorage() {   
     try{
     userData = ref(localStorage.getItem('userSession') || '');
-    token = JSON.parse(userData.value).token;
-    userID = JSON.parse(userData.value).user.id;
-    leagueID = JSON.parse(userData.value).leagues[0].id;
-    userName = JSON.parse(userData.value).user.name;
-    cover = JSON.parse(userData.value).user.cover;
+    console.log("userData: " + userData.value);
+    token = JSON.parse(userData.value).tkn;
+    userID = JSON.parse(userData.value).u.id;
+    userName = JSON.parse(userData.value).u.name;
+    cover = JSON.parse(userData.value).u.profile;
+    leagueID = JSON.parse(userData.value).srvl[0].id;
 
     loadBase(userID, leagueID, token);
     getCurrentGifts(leagueID, token);
     collectGifts(leagueID, token);
     }
     catch (error) {
+        console.log("Error fetching storage: " + error);
         toastType.value = 'error';
         toastMessage.value = 'Base loading failed';
         toastVisible.value = true;
@@ -106,9 +106,8 @@ const collectGifts = async (leagueID: any, token: any) => {
         giftStatus.value = 'Collected';
     }
 };
-onMounted(() => {
-    fetchStorage();
-});
+
+fetchStorage();
 </script>
 
 <template>

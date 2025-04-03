@@ -12,7 +12,6 @@
 </template>
   
   <script lang="ts">
-  import { defineComponent, computed } from 'vue';
   
   export default defineComponent({
     props: {
@@ -29,14 +28,14 @@
         required: true
       }
     },
-    setup(props) {
+    setup(props: { type: 'success' | 'error'; }) {
       const toastClasses = computed(() => {
         const baseClasses = 'fixed bottom-4 right-4 flex items-center p-4 border-l-4 shadow-lg rounded-md';
         const typeClasses = {
           success: 'bg-green-100 border-green-400 text-green-700',
           error: 'bg-red-100 border-red-400 text-red-700'
         };
-        return `${baseClasses} ${typeClasses[props.type]}`;
+        return `${baseClasses} ${typeClasses[props.type as 'success' | 'error']}`;
       });
   
       return {

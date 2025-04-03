@@ -34,6 +34,7 @@
     "@nuxtjs/tailwindcss": "^6.12.0",
     "@sidebase/nuxt-auth": "^0.6.0",
     "@types/better-sqlite3": "^7.6.10",
+    "@types/vue": "^1.0.31",
     "drizzle-kit": "^0.22.7"
   }
 }

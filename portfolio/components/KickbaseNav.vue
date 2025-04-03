@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { ref, computed } from 'vue';
 
 const colorMode = useColorMode();
 const route = useRoute();
